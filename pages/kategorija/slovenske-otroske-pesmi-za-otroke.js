@@ -1,0 +1,154 @@
+import Layout from '../../components/Layout';
+import Categories from '../../components/Categories';
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import theme from '../../styles/theme';
+import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
+import Songbrowser from '../../components/Songbrowser';
+import FeaturedArtistsList from '../../components/FeaturedArtistList';
+import Accordion from '@material-ui/core/Accordion';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Head from 'next/head';
+import Image from 'next/image';
+import LinkMUI from '@material-ui/core/Link';
+const useStyles = makeStyles({
+	listWrapper: {
+		margin: theme.spacing(6, 0, 4, 0)
+	}
+});
+
+export default function otroske_pesmi({ newestSongs, popularSongs, mostSongsArtists, mostViewedArtists }) {
+	const classes = useStyles();
+
+	return (
+		<Layout>
+			<Head>
+				<title>SLOVENSKE OTROŠKE PESMI ZA OTROKE | Besedila Akordi Tablature</title>
+				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+				<meta
+					name="description"
+					content="SLOVENSKE OTROŠKE PESMI ZA OTROKE. Besedila pesmi (lyrics, tekst, text)  Akordi prijemi (chords) ter Tablature (tabs) za kitaro, ukulele, harmoniko, klavir.
+					"
+				/>
+				<meta
+					name="keywords"
+					content="Otroške pesmice, otroške pesmi, pesmice za otroke, pesmi za otroke besedilo pesmi, kitarski akordi,  akordi  za ukulele, akordi klavir,  tablature za kitaro, lyrics, tabs, chords, text, tekst,  besedilo 
+					"
+				/>
+			</Head>
+			<Typography gutterBottom variant="h4" component="h1">
+				<strong>SLOVENSKE OTROŠKE PESMI ZA OTROKE</strong> Besedila (Tekst, Lyrics), Akordi (Chords), Tablature
+				(Tabs)
+			</Typography>
+
+			<Typography
+				gutterBottom
+				variant="subtitle1"
+				component="h2"
+				color="secondary"
+				style={{ marginTop: theme.spacing(3) }}
+			>
+				<strong> SLOVENSKE OTROŠKE PESMI ZA OTROKE</strong> Besedila (Tekst, Text, Lyrics), Akordi prijemi
+				(Chords), Tablature (Tabs) za kitaro, ukulele, klavir, vaših najboljših najlepših popularnih pesmi.
+			</Typography>
+			<Typography variant="caption" component="p" align="justify">
+				Kategorija <strong>slovenske otroške pesmi za otroke</strong> je spletna kategorija glasbenega portala
+				Besedilo Akordi Tablature v kateri so zbrane dobre najboljše najlepše popularne slovenske otroške
+				pesmice. Za posamezne pesmi za otroke lahko v bazi najdete: Akorde prijeme za kitaro (Chords), Besedila
+				pesmi (lyrics, text, tekst), Tablature za kitaro (tabs) & Video spote za vaše priljubljeno otroško
+				pesem. Ko predvajate video spot željene slovenske otroške pesmi za otroke lahko istočasno spremljate in
+				prepevate pripadajoče besedilo pesmi. Istočasno vidite tudi akorde za kitaro, ukulele, harmoniko,
+				klavir, ki so namenjeni spremljavi otroške pesmice na vašem akordičnem glasbenem instrumentu. Razne
+				ostale pesmi iščete preko ostalih kategorij (na primer: pesmi za Božič v karegoriji Božične pesmi ) ali
+				preko našega Brskalnika, v katerega lahko vpišete samo par črk vaše priljubljene popularne pesmi ali
+				avtorja in skušal vam bo najti željeno skladbo z besedilom, akordi in tablaturo če ta obstaja.
+			</Typography>
+			<Typography variant="caption" component="p" align="justify">
+				V kategoriji slovenske otroške pesmi za otroke se posebej zahvaljujemo liderju slovenske glasbene
+				<LinkMUI href="https://ansambel-objem.si/" target="_blank">
+					skupine OBJEM band
+				</LinkMUI>{' '}
+				, ki so prispeval lep del simpatično prirejenih{' '}
+				<LinkMUI href="https://ansambel-objem.si/otroske-pesmice-slovenske-pesmi-za-otroke/" target="_blank">
+					otroških pesmi
+				</LinkMUI>.
+			</Typography>
+			<nav style={{ marginTop: theme.spacing(4) }}>
+				<Categories />
+			</nav>
+			<section style={{ marginTop: theme.spacing(6) }}>
+				<FeaturedArtistsList mostViewedArtists={mostViewedArtists} mostSongsArtists={mostSongsArtists} />
+			</section>
+
+			<section className={classes.listWrapper}>
+				<Typography variant="h6" gutterBottom>
+					BESEDILA PESMI IN AKORDI:
+				</Typography>
+				<Songbrowser newsetsongs={newestSongs} popularSongs={popularSongs} />
+			</section>
+
+			<Accordion component="article">
+				<AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
+					<Typography className={classes.heading} component="h2">
+						Otroske pesmice besedila akordi za kitaro
+					</Typography>
+				</AccordionSummary>
+				<AccordionDetails>
+					<Grid container>
+						<Grid container justify="center">
+							<Image
+								src="/kategorije/Otroske-pesmice-besedila-akordi-za-kitaro.jpg"
+								alt="Otroske-pesmice-besedila-akordi-za-kitaro"
+								width={1920}
+								height={1080}
+							/>
+						</Grid>
+						<Typography component="p" variant="subtitle2" style={{ marginTop: theme.spacing(2) }}>
+							Dobrodošli v kategoriji Otroške pesmice. Ponujamo vam veliko zbirko akordov za kitaro,
+							klavir in druge inštrumente. Vabimo, da tudi vi dodate svoje akorde ali tablature za kakšno
+							otroško pesem in tako nam, vam in vsem drugim omogočite obilo zabave pri igranju in učenju
+							besedil pesmi in akordov. Dodajanje svojega besedila je mogoče v orodni vrstici na zavihku
+							Dodaj svoje Besedilo/Akorde. Če rabite pomoč pri igranju kitare ali pa vas morda zanima kaj
+							drugega z glasbenega področja, vam na začetni strani ponujamo glasbene članke, od onsnovnih
+							akordov za kitaro, video lekcij za učenje kitare, do malo bolj teoretičnih tem kot kvintni
+							krog za iskanje akordov, ali pa morda članek za nakup nove akustične oziroma električne
+							kitare ali klavirja(klaviature). Veliko srče pri iskanju pesmi, ki ustreza tebi v kategoriji
+							ortoške pesmi! Otroške pesmi so pesmice, ki so bile napisane za otroke. V preteklost so se v
+							večini pojavljale ljudske otroške pesmice, ki so jih starši peli in igrali kot uspavanke,
+							ali pa za razvedrilo. Otroške pesmice velikokrat obsegajo tematiko živali, ali ljudi v
+							povezavi z ljubeznijo, igro in nagajivostjo. Veliko otroških pesmic oziroma pesmi za otroke
+							in akordov lahko najdete na tem glasbenem poratalu pod rubriko otroške pesmice. Nekatere
+							bolj znanih pesmi za otroke so Kuža pazi, Lepa anka kolo vodi, Pika Nogavička, Marko skače,
+							Zajček Dolgoušček, Sreča na vrvici, Abraham ma sedem sinov, Moj črni konj.
+						</Typography>
+					</Grid>
+				</AccordionDetails>
+			</Accordion>
+		</Layout>
+	);
+}
+
+export async function getStaticProps() {
+	const res = await fetch(process.env.NEXT_PUBLIC_WEBSERVER + '/api/songs/otroska');
+	const categoryData = await res.json();
+	const newestSongs = categoryData[0];
+	const popularSongs = categoryData[1];
+	const mostViewedArtists = categoryData[2];
+	const mostSongsArtists = categoryData[3];
+
+	return {
+		props: {
+			newestSongs,
+			popularSongs,
+			mostViewedArtists,
+			mostSongsArtists
+		},
+		// Next.js will attempt to re-generate the page:
+		// - When a request comes in
+		// - At most once every second
+		revalidate: 5 // In seconds
+	};
+}
