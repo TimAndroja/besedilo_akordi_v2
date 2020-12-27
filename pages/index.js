@@ -318,7 +318,7 @@ export default function index({ newSongs, curentlyPopularSongs, popularArtists, 
 				variant="h6"
 				component="h2"
 				color="secondary"
-				style={{ marginTop: theme.spacing(4) }}
+				style={{ marginTop: theme.spacing(1) }}
 			>
 				BESEDILA PESMI AKORDI ZA KITAROBESEDILA PESMI AKORDI ZA KITARO:
 			</Typography>
@@ -333,7 +333,7 @@ export default function index({ newSongs, curentlyPopularSongs, popularArtists, 
 				<Categories />
 			</section>
 
-			<Grid container style={{ marginTop: theme.spacing(4) }} spacing={6}>
+			<Grid container style={{ marginTop: theme.spacing(6) }} spacing={6}>
 				<Grid item sm={6}>
 					<Typography variant="body1" color="textPrimary" gutterBottom>
 						SOME SEO:
@@ -353,7 +353,7 @@ export default function index({ newSongs, curentlyPopularSongs, popularArtists, 
 				variant="h6"
 				component="h3"
 				color="secondary"
-				style={{ marginTop: theme.spacing(3) }}
+				style={{ marginTop: theme.spacing(4) }}
 			>
 				NOVO DODANI AKORDI:
 			</Typography>

@@ -37,7 +37,7 @@ export default function Songbrowser(props) {
 		}
 		return pagesArray;
 	}
-	console.log(props.popularSongs);
+
 	const newSongs = paginationArrays(props.newsetsongs, 10);
 	const mostViewedSongs = paginationArrays(props.popularSongs, 10);
 	const songDisplayArray = [ newSongs, mostViewedSongs ];
@@ -61,7 +61,7 @@ export default function Songbrowser(props) {
 			</Tabs>
 
 			<List>
-				{songDisplayArray[0].lenghth ? (
+				{props.popularSongs.length > 0 ? (
 					songDisplayArray[value - 1][page - 1].map((song, i) => (
 						<ListItem key={i} button>
 							<Grid container>
@@ -75,27 +75,30 @@ export default function Songbrowser(props) {
 									</ListItemAvatar>
 									<ListItemText id={song.id_song} primary={song.title} />
 								</Grid>
-								<Grid xs={5}>
+								<Grid item xs={5}>
 									<ListItemText
 										id={song.id_song}
 										secondary={song.author}
 										className={classes.listViews}
 									/>
 								</Grid>
-								<Grid container xs={1}>
-									<Grid xs={3}>
-										<ListItemText
-											id={song.id_song}
-											secondary={<VisibilityIcon fontSize="small" />}
-											className={classes.listViews}
-										/>
-									</Grid>
-									<Grid xs={9}>
-										<ListItemText
-											id={song.id_song}
-											secondary={song.views}
-											className={classes.listViews}
-										/>
+								<Grid item xs={1}>
+									<Grid container>
+										<Grid item xs={3}>
+											<ListItemText
+												id={song.id_song}
+												secondary={<VisibilityIcon fontSize="small" />}
+												className={classes.listViews}
+											/>
+										</Grid>
+
+										<Grid item xs={9}>
+											<ListItemText
+												id={song.id_song}
+												secondary={song.views}
+												className={classes.listViews}
+											/>
+										</Grid>
 									</Grid>
 								</Grid>
 							</Grid>

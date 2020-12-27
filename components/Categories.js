@@ -24,6 +24,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import HomeIcon from '@material-ui/icons/Home';
+import Link from 'next/link';
 
 import Avatar from '@material-ui/core/Avatar';
 
@@ -37,101 +38,125 @@ export default function Categories() {
 				<List>
 					<Grid container>
 						<Grid item xs={2}>
-							<ListItem button>
-								<ListItemIcon>
-									<AcUnitIcon />
-								</ListItemIcon>
-								<ListItemText primary="Božične pesmi" />
-							</ListItem>
+							<Link href="/kategorija/bozicne-pesmi-bozicna-glasba">
+								<ListItem button>
+									<ListItemIcon>
+										<AcUnitIcon />
+									</ListItemIcon>
+									<ListItemText primary="Božične pesmi" />
+								</ListItem>
+							</Link>
 						</Grid>
 						<Grid item xs={2}>
-							<ListItem button>
-								<ListItemIcon>
-									<LanguageIcon />
-								</ListItemIcon>
-								<ListItemText primary="Hrvaške pesmi" />
-							</ListItem>
+							<Link href="/kategorija/hrvaske-dalmatinske-pesmi-hrvaska-dalmatinska-glasba">
+								<ListItem button>
+									<ListItemIcon>
+										<LanguageIcon />
+									</ListItemIcon>
+									<ListItemText primary="Hrvaške pesmi" />
+								</ListItem>
+							</Link>
 						</Grid>
 
 						<Grid item xs={2}>
-							<ListItem button>
-								<ListItemIcon>
-									<RecordVoiceOverIcon />
-								</ListItemIcon>
-								<ListItemText primary="Ljudske pesmi" />
-							</ListItem>
+							<Link href="/kategorija/slovenske-ljudske-pesmi-ljudska-glasba">
+								<ListItem button>
+									<ListItemIcon>
+										<RecordVoiceOverIcon />
+									</ListItemIcon>
+									<ListItemText primary="Ljudske pesmi" />
+								</ListItem>
+							</Link>
 						</Grid>
 						<Grid item xs={2}>
-							<ListItem button>
-								<ListItemIcon>
-									<LibraryBooksIcon />
-								</ListItemIcon>
-								<ListItemText primary="Narodno zabavna" />
-							</ListItem>
+							<Link href="/kategorija/narodno-zabavna-domaca-glasba">
+								<ListItem button>
+									<ListItemIcon>
+										<LibraryBooksIcon />
+									</ListItemIcon>
+									<ListItemText primary="Narodno zabavna" />
+								</ListItem>
+							</Link>
 						</Grid>
 						<Grid item xs={2}>
-							<ListItem button>
-								<ListItemIcon>
-									<ChildCareIcon />
-								</ListItemIcon>
-								<ListItemText primary="Otroške pesmi" />
-							</ListItem>
+							<Link href="/kategorija/slovenske-otroske-pesmi-za-otroke">
+								<ListItem button>
+									<ListItemIcon>
+										<ChildCareIcon />
+									</ListItemIcon>
+									<ListItemText primary="Otroške pesmi" />
+								</ListItem>
+							</Link>
 						</Grid>
 						<Grid item xs={2}>
-							<ListItem button>
-								<ListItemIcon>
-									<LibraryBooksIcon />
-								</ListItemIcon>
-								<ListItemText primary="Najbolj popularno" />
-							</ListItem>
+							<Link href="/kategorija/popularne-najlepse-pesmi-popularna-glasba">
+								<ListItem button>
+									<ListItemIcon>
+										<LibraryBooksIcon />
+									</ListItemIcon>
+									<ListItemText primary="Najbolj popularno" />
+								</ListItem>
+							</Link>
 						</Grid>
 						<Grid item xs={2}>
-							<ListItem button>
-								<ListItemIcon>
-									<AudiotrackIcon />
-								</ListItemIcon>
-								<ListItemText primary="Pop Rock glasba" />
-							</ListItem>
+							<Link href="/kategorija/pop-rock-gasba-ex-yu-yugo">
+								<ListItem button>
+									<ListItemIcon>
+										<AudiotrackIcon />
+									</ListItemIcon>
+									<ListItemText primary="Pop Rock glasba" />
+								</ListItem>
+							</Link>
 						</Grid>
 						<Grid item xs={2}>
-							<ListItem button>
-								<ListItemIcon>
-									<LibraryBooksIcon />
-								</ListItemIcon>
-								<ListItemText primary="Slovenske popevke" />
-							</ListItem>
+							<Link href="/kategorija/slovenska-popevka-plesna-glasba">
+								<ListItem button>
+									<ListItemIcon>
+										<LibraryBooksIcon />
+									</ListItemIcon>
+									<ListItemText primary="Slovenske popevke" />
+								</ListItem>
+							</Link>
 						</Grid>
 						<Grid item xs={2}>
-							<ListItem button>
-								<ListItemIcon>
-									<LanguageIcon />
-								</ListItemIcon>
-								<ListItemText primary="Slovenske zabavne" />
-							</ListItem>
+							<Link href="/kategorija/slovenske-pesmi">
+								<ListItem button>
+									<ListItemIcon>
+										<LanguageIcon />
+									</ListItemIcon>
+									<ListItemText primary="Slovenske zabavne" />
+								</ListItem>
+							</Link>
 						</Grid>
 						<Grid item xs={2}>
-							<ListItem button>
-								<ListItemIcon>
-									<LibraryBooksIcon />
-								</ListItemIcon>
-								<ListItemText primary="Ostale pesmi" />
-							</ListItem>
+							<Link href="/kategorija/ostalo-angleske-disco-pesmi-instrumentalna-klasicna-glasba">
+								<ListItem button>
+									<ListItemIcon>
+										<LibraryBooksIcon />
+									</ListItemIcon>
+									<ListItemText primary="Ostale pesmi" />
+								</ListItem>
+							</Link>
 						</Grid>
 						<Grid item xs={2}>
-							<ListItem button>
-								<ListItemIcon>
-									<LibraryBooksIcon />
-								</ListItemIcon>
-								<ListItemText primary="Seznam izvajalcev" />
-							</ListItem>
+							<Link href="/kategorija/">
+								<ListItem button>
+									<ListItemIcon>
+										<LibraryBooksIcon />
+									</ListItemIcon>
+									<ListItemText primary="Seznam izvajalcev" />
+								</ListItem>
+							</Link>
 						</Grid>
 						<Grid item xs={2}>
-							<ListItem button>
-								<ListItemIcon>
-									<SchoolIcon />
-								</ListItemIcon>
-								<ListItemText primary="Lekcije za kitaro" />
-							</ListItem>
+							<Link href="/kategorija/ucenje-igranje-sola-kitare">
+								<ListItem button>
+									<ListItemIcon>
+										<SchoolIcon />
+									</ListItemIcon>
+									<ListItemText primary="Kitarske lekcije" />
+								</ListItem>
+							</Link>
 						</Grid>
 					</Grid>
 				</List>

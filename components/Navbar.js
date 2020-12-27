@@ -1,5 +1,5 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React, { useState } from 'react';
+import { makeStyles, fade } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -21,6 +21,9 @@ import Brightness7Icon from '@material-ui/icons/Brightness7';
 import AddIcon from '@material-ui/icons/Add';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import MusicNoteIcon from '@material-ui/icons/MusicNote';
+import TextField from '@material-ui/core/TextField';
+import { Box } from '@material-ui/core';
+import { useRouter } from 'next/router';
 const useStyles = makeStyles((theme) => ({
 	AppBar: {
 		zIndex: theme.zIndex.drawer + 1
@@ -32,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
 		marginRight: theme.spacing(0)
 	},
 	title: {
+		flexGrow: 1,
 		display: 'none',
 		[theme.breakpoints.up('sm')]: {
 			display: 'block'
@@ -52,13 +56,58 @@ const useStyles = makeStyles((theme) => ({
 		[theme.breakpoints.up('md')]: {
 			display: 'none'
 		}
+	},
+	search: {
+		position: 'relative',
+		borderRadius: theme.shape.borderRadius,
+		backgroundColor: fade(theme.palette.common.white, 0.15),
+		'&:hover': {
+			backgroundColor: fade(theme.palette.common.white, 0.25)
+		},
+		marginLeft: 0,
+		width: '100%',
+		[theme.breakpoints.up('sm')]: {
+			marginLeft: theme.spacing(1),
+			width: 'auto'
+		}
+	},
+	searchIcon: {
+		padding: theme.spacing(0, 2),
+		height: '100%',
+		position: 'absolute',
+		pointerEvents: 'none',
+		display: 'flex',
+		alignItems: 'center',
+		justifyContent: 'center'
+	},
+	inputRoot: {
+		color: 'inherit'
+	},
+	inputInput: {
+		padding: theme.spacing(1, 1, 1, 0),
+		// vertical padding + font size from searchIcon
+		paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
+		transition: theme.transitions.create('width'),
+		width: '100%',
+		[theme.breakpoints.up('sm')]: {
+			width: '12ch',
+			'&:focus': {
+				width: '20ch'
+			}
+		}
 	}
 }));
 
 export default function Navbar() {
+	const router = useRouter();
 	const classes = useStyles();
-	const [ anchorEl, setAnchorEl ] = React.useState(null);
-	const [ mobileMoreAnchorEl, setMobileMoreAnchorEl ] = React.useState(null);
+	const [ searchInput, setSearchInput ] = React.useState('');
+
+	function handleKeyDown(event) {
+		if (event.keyCode === 13) {
+			router.push(`/brskaj?query=${searchInput}`);
+		}
+	}
 
 	return (
 		<nav className={classes.grow}>
@@ -67,20 +116,38 @@ export default function Navbar() {
 					<IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="open drawer">
 						<MusicNoteIcon />
 					</IconButton>
-					<div>
-						<Typography variant="h5" component="h3" noWrap>
-							Besedilo-akordi.si
-						</Typography>
-					</div>
 
-					<div className={classes.grow} />
-					<div className={classes.sectionDesktop}>
-						<IconButton color="inherit" aria-label="upload picture" component="span">
-							<Brightness4Icon />
-						</IconButton>
+					<Typography className={classes.title} variant="h6" noWrap>
+						Besedilo-akordi.si
+					</Typography>
+
+					<div className={classes.search}>
+						<div className={classes.searchIcon}>
+							<SearchIcon />
+						</div>
+						<InputBase
+							placeholder="Brskaj..."
+							classes={{
+								root: classes.inputRoot,
+								input: classes.inputInput
+							}}
+							inputProps={{ 'aria-label': 'search' }}
+							value={searchInput}
+							onChange={(e) => setSearchInput(e.target.value)}
+							onKeyDown={handleKeyDown}
+						/>
 					</div>
-					<div className={classes.sectionMobile} />
+					<IconButton
+						edge="start"
+						className={classes.menuButton}
+						color="inherit"
+						aria-label="open drawer"
+						style={{ marginLeft: '5px' }}
+					>
+						<Brightness4Icon />
+					</IconButton>
 				</Toolbar>
+				<div className={classes.grow} />
 			</AppBar>
 		</nav>
 	);
