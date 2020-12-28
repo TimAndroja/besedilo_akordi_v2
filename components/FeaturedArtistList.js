@@ -13,8 +13,15 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import theme from '../styles/theme';
 import Avatar from '@material-ui/core/Avatar';
+import Link from 'next/link';
+const Diacritics = require('diacritic');
 const useStyles = makeStyles({});
+
 export default function FeaturedArtistsList({ mostViewedArtists, mostSongsArtists }) {
+	function artistToUrl(string) {
+		return '/izvajalci/' + Diacritics.clean(string).replace(/[^a-z0-9]/gi, '-').toLowerCase();
+	}
+
 	const classes = useStyles();
 	return (
 		<Grid container spacing={10}>
@@ -28,20 +35,22 @@ export default function FeaturedArtistsList({ mostViewedArtists, mostSongsArtist
 							const labelId = `checkbox-list-secondary-label-${1}`;
 							return (
 								<Grid item sm={6}>
-									<ListItem key={index} button>
-										<ListItemAvatar>
-											<Avatar
-												alt={artist.author + 'izvajalec akordov pesmi največja zbirka'}
-												src={`/`}
+									<Link href={artistToUrl(artist.author)}>
+										<ListItem key={index} button>
+											<ListItemAvatar>
+												<Avatar
+													alt={artist.author + 'izvajalec akordov pesmi največja zbirka'}
+													src={`/`}
+												/>
+											</ListItemAvatar>
+											<ListItemText
+												id={labelId}
+												primary={artist.author}
+												secondary={`#${index + 1}`}
 											/>
-										</ListItemAvatar>
-										<ListItemText
-											id={labelId}
-											primary={artist.author}
-											secondary={`#${index + 1}`}
-										/>
-										<ListItemSecondaryAction />
-									</ListItem>
+											<ListItemSecondaryAction />
+										</ListItem>
+									</Link>
 								</Grid>
 							);
 						})}
@@ -58,20 +67,22 @@ export default function FeaturedArtistsList({ mostViewedArtists, mostSongsArtist
 							const labelId = `checkbox-list-secondary-label-${1}`;
 							return (
 								<Grid item sm={6}>
-									<ListItem key={index} button>
-										<ListItemAvatar>
-											<Avatar
-												alt={artist.author + 'izvajalec akordov pesmi najbolj gledani'}
-												src={`/static/images/avatar/${1}.jpg`}
+									<Link href={artistToUrl(artist.author)}>
+										<ListItem key={index} button>
+											<ListItemAvatar>
+												<Avatar
+													alt={artist.author + 'izvajalec akordov pesmi najbolj gledani'}
+													src={`/static/images/avatar/${1}.jpg`}
+												/>
+											</ListItemAvatar>
+											<ListItemText
+												id={labelId}
+												primary={artist.author}
+												secondary={`#${index + 1}`}
 											/>
-										</ListItemAvatar>
-										<ListItemText
-											id={labelId}
-											primary={artist.author}
-											secondary={`#${index + 1}`}
-										/>
-										<ListItemSecondaryAction />
-									</ListItem>
+											<ListItemSecondaryAction />
+										</ListItem>
+									</Link>
 								</Grid>
 							);
 						})}

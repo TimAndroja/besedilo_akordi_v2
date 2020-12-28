@@ -13,6 +13,7 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
+import Image from 'next/image';
 const useStyles = makeStyles({
 	listWrapper: {
 		margin: theme.spacing(4, 0)
@@ -31,31 +32,33 @@ const useStyles = makeStyles({
 		margin: theme.spacing(4, 0, 4, 0)
 	}
 });
-function Artist({ songsNew, songsPopular, authorName }) {
+function Chords({ songData }) {
 	// Render post...
 	const classes = useStyles();
-
-	const showSongs = (
-		<section className={classes.listWrapper}>
-			<Typography variant="h6" gutterBottom>
-				BESEDILA PESMI IN AKORDI:
-			</Typography>
-			<Songbrowser newsetsongs={songsNew} popularSongs={songsPopular} />
-		</section>
-	);
-
+	const imageUrl = songData.pdf_file_name.substr(0, songData.pdf_file_name.lastIndexOf('.')) + '.jpg';
+	console.log(imageUrl);
 	return (
 		<Layout>
-			<Typography variant="h4" component="h1">
-				{authorName}
-			</Typography>
-			{showSongs}
+			<Grid container>
+				<Grid item sm={6}>
+					test
+				</Grid>
+				<Grid item sm={6}>
+					<Image
+						src={`${process.env.NEXT_PUBLIC_WEBSERVER}/api/pdf_images/${imageUrl}`}
+						alt="oglas1"
+						width={2550}
+						height={3300}
+					/>
+				</Grid>
+			</Grid>
+			<Typography variant="h4" component="h1" />
 		</Layout>
 	);
 }
 
 export async function getStaticPaths() {
-	const res = await fetch(`${process.env.NEXT_PUBLIC_WEBSERVER}/api/songs/paths/artists`);
+	const res = await fetch(`${process.env.NEXT_PUBLIC_WEBSERVER}/api/songs/paths/songs`);
 	const paths = await res.json();
 
 	return {
@@ -68,15 +71,14 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
 	// params contains the post `id`.
 	// If the route is like /posts/1, then params.id is 1
+	const splitLink = params.id.split('-');
+	const id = splitLink[splitLink.length - 1];
 
-	const res = await fetch(`${process.env.NEXT_PUBLIC_WEBSERVER}/api/songs/artist/${params.id}`);
-	const songs = await res.json();
-	const songsNew = songs[0];
-	const songsPopular = songs[1];
-	const authorName = songs[2];
-
+	const res = await fetch(`${process.env.NEXT_PUBLIC_WEBSERVER}/api/songs/content/${id}`);
+	const responded = await res.json();
+	const songData = responded[0];
 	// Pass post data to the page via props
-	return { props: { songsNew, songsPopular, authorName } };
+	return { props: { songData } };
 }
 
-export default Artist;
+export default Chords;

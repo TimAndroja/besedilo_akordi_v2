@@ -1,15 +1,13 @@
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import Slider from 'react-slick';
+
 import Head from 'next/head';
 import Layout from '../components/Layout';
+import SongCarousel from '../components/SongCarousel';
 import Categories from '../components/Categories';
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
+
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
@@ -29,7 +27,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Image from 'next/image';
 import Link from 'next/link';
 import LinkMUI from '@material-ui/core/Link';
-
+const Diacritics = require('diacritic');
 const useStyles = makeStyles({
 	cardContent: {
 		paddingLeft: theme.spacing(2),
@@ -64,18 +62,11 @@ const useStyles = makeStyles({
 });
 
 export default function index({ newSongs, curentlyPopularSongs, popularArtists, mostViewedSongs, mostSongsArtists }) {
-	const classes = useStyles();
-	//SLICK JS SLIDER
+	function artistToUrl(string) {
+		return '/izvajalci/' + Diacritics.clean(string).replace(/[^a-z0-9]/gi, '-').toLowerCase();
+	}
 
-	const settings = {
-		dots: true,
-		infinite: true,
-		arrows: true,
-		speed: 1000,
-		slidesToShow: 4,
-		slidesToScroll: 4,
-		autoplay: false
-	};
+	const classes = useStyles();
 
 	const blog = (
 		<Grid container>
@@ -216,56 +207,23 @@ export default function index({ newSongs, curentlyPopularSongs, popularArtists, 
 		</Grid>
 	);
 
-	function SongCarousel(songs) {
-		return (
-			<article>
-				<Slider {...settings}>
-					{songs.map((song) => (
-						<Grid item key={song.id_song} className={classes.cardWrapper}>
-							<Card component="article">
-								<CardActionArea>
-									<CardMedia
-										component="img"
-										alt={`${song.title} akordi pesmi ${song.author}`}
-										height="135"
-										image={`${process.env
-											.NEXT_PUBLIC_WEBSERVER}/api/images/${song.youtube_image_name}`}
-										title={`${song.title} akordi pesmi ${song.author}`}
-									/>
-									<CardContent className={classes.cardContent}>
-										<header>
-											<Typography variant="subtitle2" component="h3" noWrap>
-												{song.title}
-											</Typography>
-											<Typography variant="body2" color="textSecondary" component="h4" noWrap>
-												{song.author.length > 0 ? song.author : 'Neznan izvajalec'}
-											</Typography>
-										</header>
-									</CardContent>
-								</CardActionArea>
-							</Card>
-						</Grid>
-					))}
-				</Slider>
-			</article>
-		);
-	}
-
 	function allTimeMostSongsArtists(songs) {
 		return (
 			<List dense>
 				{songs.map((song, i) => (
-					<ListItem key={i} button>
-						<ListItemAvatar>
-							<Avatar alt={` ${song.author} - zbirka akordov`} src={''} />
-						</ListItemAvatar>
-						<ListItemText id={song.id_song} primary={song.author} secondary={`#${i + 1}`} />
-						<ListItemText
-							id={song.id_song}
-							secondary={song.countSongs + ' pesmi'}
-							className={classes.listViews}
-						/>
-					</ListItem>
+					<Link href={artistToUrl(song.author)}>
+						<ListItem key={i} button>
+							<ListItemAvatar>
+								<Avatar alt={` ${song.author} - zbirka akordov`} src={''} />
+							</ListItemAvatar>
+							<ListItemText id={song.id_song} primary={song.author} secondary={`#${i + 1}`} />
+							<ListItemText
+								id={song.id_song}
+								secondary={song.countSongs + ' pesmi'}
+								className={classes.listViews}
+							/>
+						</ListItem>
+					</Link>
 				))}
 			</List>
 		);
@@ -275,20 +233,22 @@ export default function index({ newSongs, curentlyPopularSongs, popularArtists, 
 		return (
 			<List dense>
 				{songs.map((song, i) => (
-					<ListItem key={i} button>
-						<ListItemAvatar>
-							<Avatar
-								alt={`${song.author} popularni izvajalci pesmi akordov besedil`}
-								src={`${process.env.NEXT_PUBLIC_WEBSERVER}/api/images/${song.youtube_image_name}`}
+					<Link href={artistToUrl(song.author)}>
+						<ListItem key={i} button>
+							<ListItemAvatar>
+								<Avatar
+									alt={`${song.author} popularni izvajalci pesmi akordov besedil`}
+									src={`${process.env.NEXT_PUBLIC_WEBSERVER}/api/images/${song.youtube_image_name}`}
+								/>
+							</ListItemAvatar>
+							<ListItemText id={song.id_song} primary={song.author} secondary={`#${i + 1}`} />
+							<ListItemText
+								id={song.id_song}
+								secondary={song.sumViews + ' ogledov'}
+								className={classes.listViews}
 							/>
-						</ListItemAvatar>
-						<ListItemText id={song.id_song} primary={song.author} secondary={`#${i + 1}`} />
-						<ListItemText
-							id={song.id_song}
-							secondary={song.sumViews + ' ogledov'}
-							className={classes.listViews}
-						/>
-					</ListItem>
+						</ListItem>
+					</Link>
 				))}
 			</List>
 		);
@@ -360,7 +320,7 @@ export default function index({ newSongs, curentlyPopularSongs, popularArtists, 
 			<Divider />
 
 			<Container disableGutters maxWidth={false} className={classes.carouselMargin}>
-				{SongCarousel(newSongs)}
+				<SongCarousel songs={newSongs} />
 			</Container>
 
 			<Container disableGutters maxWidth="xl">
@@ -406,7 +366,7 @@ export default function index({ newSongs, curentlyPopularSongs, popularArtists, 
 				</Typography>
 				<Divider />
 				<Container disableGutters maxWidth={false} className={classes.carouselMargin}>
-					{SongCarousel(curentlyPopularSongs)}
+					<SongCarousel songs={curentlyPopularSongs} />
 				</Container>
 			</Container>
 			<Container disableGutters maxWidth={false}>
@@ -415,7 +375,7 @@ export default function index({ newSongs, curentlyPopularSongs, popularArtists, 
 				</Typography>
 				<Divider />
 				<Container disableGutters maxWidth={false} className={classes.carouselMargin}>
-					{SongCarousel(mostViewedSongs)}
+					<SongCarousel songs={mostViewedSongs} />
 				</Container>
 			</Container>
 			<Container maxWidth="lg" disableGutters className={classes.containerMargin}>

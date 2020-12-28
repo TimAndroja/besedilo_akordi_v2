@@ -13,6 +13,9 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
+import Link from 'next/link';
+const Diacritics = require('diacritic');
+
 const useStyles = makeStyles({
 	listWrapper: {
 		margin: theme.spacing(4, 0)
@@ -33,6 +36,9 @@ const useStyles = makeStyles({
 });
 
 export default function brskaj({ artists, songsNew, songsPopular, qry }) {
+	function artistToUrl(string) {
+		return '/izvajalci/' + Diacritics.clean(string).replace(/[^a-z0-9]/gi, '-').toLowerCase();
+	}
 	const classes = useStyles();
 
 	const showArtists = (
@@ -47,20 +53,22 @@ export default function brskaj({ artists, songsNew, songsPopular, qry }) {
 							const labelId = `checkbox-list-secondary-label-${1}`;
 							return (
 								<Grid>
-									<ListItem key={index} button>
-										<ListItemAvatar>
-											<Avatar
-												alt={artist.author + 'izvajalec akordov pesmi najbolj gledani'}
-												src={`/static/images/avatar/${1}.jpg`}
+									<Link href={artistToUrl(artist.author)}>
+										<ListItem key={index} button>
+											<ListItemAvatar>
+												<Avatar
+													alt={artist.author + 'izvajalec akordov pesmi najbolj gledani'}
+													src={`/static/images/avatar/${1}.jpg`}
+												/>
+											</ListItemAvatar>
+											<ListItemText
+												id={labelId}
+												primary={artist.author}
+												secondary={`#${index + 1}`}
 											/>
-										</ListItemAvatar>
-										<ListItemText
-											id={labelId}
-											primary={artist.author}
-											secondary={`#${index + 1}`}
-										/>
-										<ListItemSecondaryAction />
-									</ListItem>
+											<ListItemSecondaryAction />
+										</ListItem>
+									</Link>
 								</Grid>
 							);
 						})}

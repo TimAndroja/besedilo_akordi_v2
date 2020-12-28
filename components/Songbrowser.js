@@ -15,6 +15,8 @@ import WorkIcon from '@material-ui/icons/Work';
 import Pagination from '@material-ui/lab/Pagination';
 import theme from '../styles/theme';
 import VisibilityIcon from '@material-ui/icons/Visibility';
+import Link from 'next/link';
+const Diacritics = require('diacritic');
 const useStyles = makeStyles({
 	orderList: {
 		paddingRight: theme.spacing(4),
@@ -27,6 +29,12 @@ const useStyles = makeStyles({
 });
 export default function Songbrowser(props) {
 	const classes = useStyles();
+	function songToUrl(title, id) {
+		return (
+			'/pesmi/' + Diacritics.clean(title).replace(/[^a-z0-9]/gi, '-').toLowerCase() + '-akordi-za-kitaro-' + id
+		);
+	}
+
 	function paginationArrays(songs, pagesize) {
 		let pagesArray = [];
 		for (let i = 0; i < songs.length; i++) {
@@ -63,46 +71,48 @@ export default function Songbrowser(props) {
 			<List>
 				{props.popularSongs.length > 0 ? (
 					songDisplayArray[value - 1][page - 1].map((song, i) => (
-						<ListItem key={i} button>
-							<Grid container>
-								<Grid item xs={6} style={{ display: 'flex' }}>
-									<ListItemAvatar>
-										<Avatar
-											alt={` ${song.author} - zbirka akordov`}
-											src={`${process.env
-												.NEXT_PUBLIC_WEBSERVER}/api/images/${song.youtube_image_name}`}
+						<Link href={songToUrl(song.title, song.id_song)}>
+							<ListItem key={i} button>
+								<Grid container>
+									<Grid item xs={6} style={{ display: 'flex' }}>
+										<ListItemAvatar>
+											<Avatar
+												alt={` ${song.author} - zbirka akordov`}
+												src={`${process.env
+													.NEXT_PUBLIC_WEBSERVER}/api/images/${song.youtube_image_name}`}
+											/>
+										</ListItemAvatar>
+										<ListItemText id={song.id_song} primary={song.title} />
+									</Grid>
+									<Grid item xs={5}>
+										<ListItemText
+											id={song.id_song}
+											secondary={song.author}
+											className={classes.listViews}
 										/>
-									</ListItemAvatar>
-									<ListItemText id={song.id_song} primary={song.title} />
-								</Grid>
-								<Grid item xs={5}>
-									<ListItemText
-										id={song.id_song}
-										secondary={song.author}
-										className={classes.listViews}
-									/>
-								</Grid>
-								<Grid item xs={1}>
-									<Grid container>
-										<Grid item xs={3}>
-											<ListItemText
-												id={song.id_song}
-												secondary={<VisibilityIcon fontSize="small" />}
-												className={classes.listViews}
-											/>
-										</Grid>
+									</Grid>
+									<Grid item xs={1}>
+										<Grid container>
+											<Grid item xs={3}>
+												<ListItemText
+													id={song.id_song}
+													secondary={<VisibilityIcon fontSize="small" />}
+													className={classes.listViews}
+												/>
+											</Grid>
 
-										<Grid item xs={9}>
-											<ListItemText
-												id={song.id_song}
-												secondary={song.views}
-												className={classes.listViews}
-											/>
+											<Grid item xs={9}>
+												<ListItemText
+													id={song.id_song}
+													secondary={song.views}
+													className={classes.listViews}
+												/>
+											</Grid>
 										</Grid>
 									</Grid>
 								</Grid>
-							</Grid>
-						</ListItem>
+							</ListItem>
+						</Link>
 					))
 				) : (
 					'Prišlo je do napake'
