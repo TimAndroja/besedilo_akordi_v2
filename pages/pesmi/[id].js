@@ -4,6 +4,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import ChordsLeftSide from '../../components/ChordsLeftSide';
+import PdfRightSide from '../../components/PdfRightSide';
+import TextRightSide from '../../components/TextRightSide';
 import Image from 'next/image';
 import theme from '../../styles/theme';
 import List from '@material-ui/core/List';
@@ -14,8 +16,11 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import Head from 'next/head';
+import Link from 'next/link';
+import MLink from '@material-ui/core/Link';
 import DefaultErrorPage from 'next/error';
-
+import Box from '@material-ui/core/Box';
+const Diacritics = require('diacritic');
 const useStyles = makeStyles({
 	listWrapper: {
 		margin: theme.spacing(4, 0)
@@ -34,6 +39,14 @@ const useStyles = makeStyles({
 		margin: theme.spacing(4, 0, 4, 0)
 	}
 });
+function artistToUrl(string) {
+	return (
+		'/izvajalci/' +
+		Diacritics.clean(string).replace(/[^a-z0-9]/gi, '-').toLowerCase() +
+		'-pesmi-akordi-besedila-skladbe'
+	);
+}
+
 function Chords({ songData }) {
 	// Render post...
 	if (!songData) {
@@ -47,21 +60,9 @@ function Chords({ songData }) {
 		);
 	}
 	const classes = useStyles();
-	const imageUrl = songData.pdf_file_name.substr(0, songData.pdf_file_name.lastIndexOf('.')) + '.jpg';
+
 	const metaDescription = `${songData.title.toUpperCase()}Besedilo Akordi za kitaro. Izvajalec pesmi: ${songData.author.toUpperCase()}. Priljubljena besedila (Lyrics, Tekst, text) in Akordi (chords) pesmi. Portal besedilo-akordi.si`;
 	const metaKeywords = `besedilo pesmi, akordi za kitaro ukulele klavir harmoniko, ${songData.title}${songData.author}, lyrics, tabs, chords, text, tekst, uččenje kitare e glasbena šola`;
-	const ChordsRightSide = (
-		<Grid container>
-			<Grid item sm={12}>
-				<Image
-					src={`${process.env.NEXT_PUBLIC_WEBSERVER}/api/pdf_images/${imageUrl}`}
-					alt={`${songData.title} besedilo akordi ${songData.author} chords lyrics text tekst tablature tabs`}
-					width={2550}
-					height={3300}
-				/>
-			</Grid>
-		</Grid>
-	);
 
 	return (
 		<Layout>
@@ -75,14 +76,45 @@ function Chords({ songData }) {
 				<meta name="keywords" content={metaKeywords} />
 			</Head>
 			<Grid container>
+				<Grid item sm={12}>
+					<Box marginBottom={3}>
+						<header>
+							<Typography variant="overline" component="h1">
+								<strong style={{ color: theme.palette.secondary.main }}>
+									{songData.title.toUpperCase()}
+								</strong>{' '}
+								Besedilo Akordi (lyrics, text, tabs, chords) <strong>-</strong>{' '}
+								<Link href={artistToUrl(songData.author)}>
+									<MLink href="">
+										<strong style={{ color: theme.palette.primary.main }}>
+											{songData.author.toUpperCase()}
+										</strong>
+									</MLink>
+								</Link>
+							</Typography>
+							<Box marginBottom={1}>
+								<Divider />
+							</Box>
+
+							<Typography variant="h4" component="h2" gutterBottom>
+								<strong style={{ color: theme.palette.secondary.main }}>
+									{songData.title.toUpperCase()}
+								</strong>{' '}
+								<strong>BESEDILO AKORDI (TEXT, TEKST, CHORDS, TABS, TABLATURE, LYRICS)</strong>
+							</Typography>
+						</header>
+					</Box>
+				</Grid>
 				<Grid item sm={4}>
 					<ChordsLeftSide songContent={songData} />
 				</Grid>
-				<Grid item sm={2}>
-					<Divider orientation="vertical" variant="middle" style={{ margin: 'auto' }} />
-				</Grid>
-				<Grid item sm={6}>
-					{ChordsRightSide}
+				<Grid item xl={2} />
+				<Grid item xl={6}>
+					{songData.pdf_file_name ? (
+						<PdfRightSide songContent={songData} />
+					) : (
+						<TextRightSide songContent={songData} />
+					)}
 				</Grid>
 			</Grid>
 			<Typography variant="h4" component="h1" />
@@ -113,6 +145,7 @@ export async function getStaticProps({ params }) {
 
 	let songData = null;
 	if (responded) songData = responded[0];
+
 	// Pass post data to the page via props
 	return { props: { songData } };
 }

@@ -22,7 +22,7 @@ import Divider from '@material-ui/core/Divider';
 import HomeIcon from '@material-ui/icons/Home';
 import Link from 'next/link';
 import theme from '../styles/theme';
-const drawerWidth = 270;
+const drawerWidth = 250;
 const useStyles = makeStyles({
 	drawer: {
 		width: drawerWidth,

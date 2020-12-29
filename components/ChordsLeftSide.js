@@ -12,6 +12,10 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Paper from '@material-ui/core/Paper';
 import { Box, Typography } from '@material-ui/core';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
 const Diacritics = require('diacritic');
 const useStyles = makeStyles({
 	formControl: {
@@ -34,101 +38,107 @@ function artistToUrl(string) {
 export default function ChordsLeftSide({ songContent }) {
 	const kategorije = (
 		<section>
-			Izvajalca{' '}
-			<Link href={artistToUrl(songContent.author)}>
-				<MLink href="">{songContent.author}</MLink>
-			</Link>{' '}
-			in druge podobne pesmi lahko najdete tudi v kategorijah:{' '}
-			{songContent.lekcija ? (
-				<span>
-					<Link href="/kategorija/ucenje-igranje-sola-kitare">
-						<MLink href="">Kitarske lekcije</MLink>
+			<Typography component="p" variant="button">
+				<Box marginBottom={1}>
+					Izvajalca{' '}
+					<Link href={artistToUrl(songContent.author)}>
+						<MLink href="">{songContent.author}</MLink>
 					</Link>{' '}
-				</span>
-			) : (
-				''
-			)}
-			{songContent.slovenska ? (
-				<span>
-					<Link href="/kategorija/slovenske-pesmi">
-						<MLink href="">Slovenske zabavne pesmi</MLink>
-					</Link>{' '}
-				</span>
-			) : (
-				''
-			)}
-			{songContent.dalmatinska ? (
-				<span>
-					<Link href="/kategorija/hrvaske-dalmatinske-pesmi-hrvaska-dalmatinska-glasba">
-						<MLink href="">Hrvaške pesmi</MLink>
-					</Link>{' '}
-				</span>
-			) : (
-				''
-			)}
-			{songContent.tuja ? (
-				<span>
-					<Link href="/kategorija/ostalo-angleske-disco-pesmi-instrumentalna-klasicna-glasba">
-						<MLink href="">Ostale pesmi</MLink>
-					</Link>{' '}
-				</span>
-			) : (
-				''
-			)}
-			{songContent.narodna ? (
-				<span>
-					<Link href="/kategorija/narodno-zabavna-domaca-glasba">
-						<MLink href="">Narodno zabavna glasba</MLink>
-					</Link>{' '}
-				</span>
-			) : (
-				''
-			)}
-			{songContent.otroska ? (
-				<span>
-					<Link href="/kategorija/slovenske-otroske-pesmi-za-otroke">
-						<MLink href="">Otroške pesmi</MLink>
-					</Link>{' '}
-				</span>
-			) : (
-				''
-			)}
-			{songContent.bozicna ? (
-				<span>
-					<Link href="/kategorija/bozicne-pesmi-bozicna-glasba">
-						<MLink href="">Bozične pesmi</MLink>
-					</Link>{' '}
-				</span>
-			) : (
-				''
-			)}
-			{songContent.popevka ? (
-				<span>
-					<Link href="/kategorija/slovenska-popevka-plesna-glasba">
-						<MLink href="">Slovenska popevka</MLink>
-					</Link>{' '}
-				</span>
-			) : (
-				''
-			)}
-			{songContent.ljudska ? (
-				<span>
-					<Link href="/kategorija/slovenske-ljudske-pesmi-ljudska-glasba">
-						<MLink href="">Ljudske pesmi</MLink>
-					</Link>{' '}
-				</span>
-			) : (
-				''
-			)}
-			{songContent.rock ? (
-				<span>
-					<Link href="/kategorija/pop-rock-gasba-ex-yu-yugo">
-						<MLink href="">Pop rock glasba</MLink>
-					</Link>{' '}
-				</span>
-			) : (
-				''
-			)}
+					in druge podobne pesmi lahko najdete tudi v kategorijah:{' '}
+				</Box>
+				<List style={{ backgroundColor: theme.palette.background.paper }}>
+					{songContent.lekcija ? (
+						<Link href="/kategorija/ucenje-igranje-sola-kitare">
+							<ListItem button>
+								<MLink href="">Kitarske lekcije</MLink>
+							</ListItem>
+						</Link>
+					) : (
+						''
+					)}
+					{songContent.slovenska ? (
+						<ListItem button>
+							<Link href="/kategorija/slovenske-pesmi">
+								<MLink href="">Slovenske zabavne pesmi</MLink>
+							</Link>{' '}
+						</ListItem>
+					) : (
+						''
+					)}
+					{songContent.dalmatinska ? (
+						<Link href="/kategorija/hrvaske-dalmatinske-pesmi-hrvaska-dalmatinska-glasba">
+							<ListItem button>
+								<MLink href="">Hrvaške pesmi</MLink>
+							</ListItem>
+						</Link>
+					) : (
+						''
+					)}
+					{songContent.tuja ? (
+						<Link href="/kategorija/ostalo-angleske-disco-pesmi-instrumentalna-klasicna-glasba">
+							<ListItem button>
+								<MLink href="">Ostale pesmi</MLink>
+							</ListItem>
+						</Link>
+					) : (
+						''
+					)}
+					{songContent.narodna ? (
+						<Link href="/kategorija/narodno-zabavna-domaca-glasba">
+							<ListItem button>
+								<MLink href="">Narodno zabavna glasba</MLink>
+							</ListItem>
+						</Link>
+					) : (
+						''
+					)}
+					{songContent.otroska ? (
+						<Link href="/kategorija/slovenske-otroske-pesmi-za-otroke">
+							<ListItem button>
+								<MLink href="">Otroške pesmi</MLink>
+							</ListItem>
+						</Link>
+					) : (
+						''
+					)}
+					{songContent.bozicna ? (
+						<Link href="/kategorija/bozicne-pesmi-bozicna-glasba">
+							<ListItem button>
+								<MLink href="">Bozične pesmi</MLink>
+							</ListItem>
+						</Link>
+					) : (
+						''
+					)}
+					{songContent.popevka ? (
+						<Link href="/kategorija/slovenska-popevka-plesna-glasba">
+							<ListItem button>
+								<MLink href="">Slovenska popevka</MLink>
+							</ListItem>
+						</Link>
+					) : (
+						''
+					)}
+					{songContent.ljudska ? (
+						<Link href="/kategorija/slovenske-ljudske-pesmi-ljudska-glasba">
+							<ListItem button>
+								<MLink href="">Ljudske pesmi</MLink>
+							</ListItem>
+						</Link>
+					) : (
+						''
+					)}
+					{songContent.rock ? (
+						<Link href="/kategorija/pop-rock-gasba-ex-yu-yugo">
+							<ListItem button>
+								<MLink href="">Pop rock glasba</MLink>
+							</ListItem>
+						</Link>
+					) : (
+						''
+					)}
+				</List>
+			</Typography>
 		</section>
 	);
 	const classes = useStyles();
@@ -152,44 +162,30 @@ export default function ChordsLeftSide({ songContent }) {
 				}}
 				src={youtubeToEmbed(songContent.youtube)}
 				frameBorder="0"
+				allowFullScreen
+				title={`${songContent.title} besedilo akordi ${songContent.author} chords lyrics text tekst tablature tabs`}
 			/>
 		</div>
 	);
 
 	return (
-		<Grid container spacing={4}>
+		<Grid container>
+			<Grid item sm={12} />
 			<Grid item sm={12}>
-				<Box marginBottom={1}>
-					<header>
-						<Typography variant="h5" component="h1">
-							<strong style={{ color: theme.palette.secondary.main }}>
-								{songContent.title.toUpperCase()}
-							</strong>{' '}
-							Besedilo Akordi (lyrics, text, tabs, chords) <strong>-</strong>{' '}
-							<Link href={artistToUrl(songContent.author)}>
-								<MLink href="">
-									<strong style={{ color: theme.palette.primary.main }}>{songContent.author}</strong>
-								</MLink>
-							</Link>
+				<Box marginBottom={3}>
+					<Grid container>
+						<Typography variant="overline" component="h3" color="textSecondary">
+							{songContent.title} {songContent.author} - Video spot
 						</Typography>
-						<Typography variant="caption" component="h2" gutterBottom>
-							<strong>{songContent.title.toUpperCase()}</strong> Besedilo Akordi. (text, tekst, chords,
-							tabs, tablature, lyrics)
-						</Typography>
-					</header>
+						<Grid item sm={12}>
+							{responsiveYoutube}
+						</Grid>
+					</Grid>
 				</Box>
-				<Box marginBottom={1}>
-					<Typography variant="caption" component="h2" color="textSecondary">
-						{songContent.title} {songContent.author} - Video spot
-					</Typography>
-					{responsiveYoutube}
-				</Box>
-				<Box marginBottom={1}>
-					<Typography component="p" variant="body2">
-						{songContent.title} Besedilo Akordi (lyrics, text, text chords). Izvajalec:{' '}
-						<Link href={artistToUrl(songContent.author)}>
-							<MLink href="">{songContent.author}</MLink>
-						</Link>. Besedilo pesmi z akordi (prijemi) za kitaro, ukulele, klavir, harmoniko.
+				<Box marginBottom={3}>
+					<Typography component="p" variant="caption">
+						{songContent.title} Besedilo Akordi (lyrics, text, text chords). Izvajalec: {songContent.author}{' '}
+						Besedilo pesmi z akordi (prijemi) za kitaro, ukulele, klavir, harmoniko.
 					</Typography>
 				</Box>
 				<Box marginBottom={1}>{kategorije}</Box>

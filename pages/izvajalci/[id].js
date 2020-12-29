@@ -94,7 +94,7 @@ function Artist({ songsNew, songsPopular, authorName }) {
 				<meta name="description" content={metaDescription} />
 				<meta name="keywords" content={metaKeywords} />
 			</Head>
-			<Grid container spacing={10}>
+			<Grid container spacing={8}>
 				<Grid item sm={8}>
 					<Box marginBottom={3}>
 						<Typography variant="h4" component="h1">
@@ -122,17 +122,24 @@ function Artist({ songsNew, songsPopular, authorName }) {
 								</Typography>
 							</Box>
 						</Grid>
-
-						<Grid item sm={5}>
-							<Typography component="h3" variant="caption">
+						<Grid item sm={12}>
+							<Typography component="h3" variant="overline" color="textSecondary">
 								{authorName} pesmi akordi besedila - Prilubljen video spot
 							</Typography>
+						</Grid>
+
+						<Grid item sm={5}>
 							{responsiveYoutube}
 						</Grid>
 					</Grid>
 				</Grid>
 				<Grid item sm={4} style={{ margin: 'auto' }}>
 					<Box>
+						<Box paddingLeft={0.2}>
+							<Typography component="h3" variant="overline" color="textSecondary">
+								{authorName} pesmi akordi besedila - Fotografija
+							</Typography>
+						</Box>
 						<Paper style={{ padding: theme.spacing(1.2) }}>
 							<Image
 								height="360px"
@@ -143,11 +150,6 @@ function Artist({ songsNew, songsPopular, authorName }) {
 								alt={`${authorName} pesmi akordi besedila skladbe tablature tekst songs lyrics`}
 							/>
 						</Paper>
-						<Box paddingLeft={1.5}>
-							<Typography component="h3" variant="caption">
-								{authorName} pesmi akordi besedila - Fotografija
-							</Typography>
-						</Box>
 					</Box>
 				</Grid>
 			</Grid>

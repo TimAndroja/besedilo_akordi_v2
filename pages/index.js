@@ -284,7 +284,7 @@ export default function index({ newSongs, curentlyPopularSongs, popularArtists, 
 				color="secondary"
 				style={{ marginTop: theme.spacing(1) }}
 			>
-				BESEDILA PESMI AKORDI ZA KITAROBESEDILA PESMI AKORDI ZA KITARO:
+				BESEDILA PESMI AKORDI ZA KITARO BESEDILA PESMI AKORDI ZA KITARO:
 			</Typography>
 
 			<Typography variant="caption" component="p" align="justify">
