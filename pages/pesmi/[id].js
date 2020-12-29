@@ -3,8 +3,8 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-import Songbrowser from '../../components/Songbrowser';
-
+import ChordsLeftSide from '../../components/ChordsLeftSide';
+import Image from 'next/image';
 import theme from '../../styles/theme';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
@@ -13,7 +13,9 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
-import Image from 'next/image';
+import Head from 'next/head';
+import DefaultErrorPage from 'next/error';
+
 const useStyles = makeStyles({
 	listWrapper: {
 		margin: theme.spacing(4, 0)
@@ -34,22 +36,53 @@ const useStyles = makeStyles({
 });
 function Chords({ songData }) {
 	// Render post...
+	if (!songData) {
+		return (
+			<div>
+				<Head>
+					<meta name="robots" content="noindex" />
+				</Head>
+				<DefaultErrorPage statusCode={404} />
+			</div>
+		);
+	}
 	const classes = useStyles();
 	const imageUrl = songData.pdf_file_name.substr(0, songData.pdf_file_name.lastIndexOf('.')) + '.jpg';
-	console.log(imageUrl);
+	const metaDescription = `${songData.title.toUpperCase()}Besedilo Akordi za kitaro. Izvajalec pesmi: ${songData.author.toUpperCase()}. Priljubljena besedila (Lyrics, Tekst, text) in Akordi (chords) pesmi. Portal besedilo-akordi.si`;
+	const metaKeywords = `besedilo pesmi, akordi za kitaro ukulele klavir harmoniko, ${songData.title}${songData.author}, lyrics, tabs, chords, text, tekst, uččenje kitare e glasbena šola`;
+	const ChordsRightSide = (
+		<Grid container>
+			<Grid item sm={12}>
+				<Image
+					src={`${process.env.NEXT_PUBLIC_WEBSERVER}/api/pdf_images/${imageUrl}`}
+					alt={`${songData.title} besedilo akordi ${songData.author} chords lyrics text tekst tablature tabs`}
+					width={2550}
+					height={3300}
+				/>
+			</Grid>
+		</Grid>
+	);
+
 	return (
 		<Layout>
+			<Head>
+				<title>
+					{songData.title.toUpperCase()} Besedilo Akordi za kitaro | Izvajalec pesmi:{' '}
+					{songData.author.toUpperCase()}
+				</title>
+				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
+				<meta name="description" content={metaDescription} />
+				<meta name="keywords" content={metaKeywords} />
+			</Head>
 			<Grid container>
-				<Grid item sm={6}>
-					test
+				<Grid item sm={4}>
+					<ChordsLeftSide songContent={songData} />
+				</Grid>
+				<Grid item sm={2}>
+					<Divider orientation="vertical" variant="middle" style={{ margin: 'auto' }} />
 				</Grid>
 				<Grid item sm={6}>
-					<Image
-						src={`${process.env.NEXT_PUBLIC_WEBSERVER}/api/pdf_images/${imageUrl}`}
-						alt="oglas1"
-						width={2550}
-						height={3300}
-					/>
+					{ChordsRightSide}
 				</Grid>
 			</Grid>
 			<Typography variant="h4" component="h1" />
@@ -75,8 +108,11 @@ export async function getStaticProps({ params }) {
 	const id = splitLink[splitLink.length - 1];
 
 	const res = await fetch(`${process.env.NEXT_PUBLIC_WEBSERVER}/api/songs/content/${id}`);
-	const responded = await res.json();
-	const songData = responded[0];
+	let responded = null;
+	responded = await res.json().catch((err) => console.log(err));
+
+	let songData = null;
+	if (responded) songData = responded[0];
 	// Pass post data to the page via props
 	return { props: { songData } };
 }

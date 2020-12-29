@@ -32,7 +32,10 @@ export default function SongCarousel({ songs }) {
 	const classes = useStyles();
 	function songToUrl(title, id) {
 		return (
-			'/pesmi/' + Diacritics.clean(title).replace(/[^a-z0-9]/gi, '-').toLowerCase() + '-akordi-za-kitaro-' + id
+			'/pesmi/' +
+			Diacritics.clean(title).replace(/[^a-z0-9]/gi, '-').toLowerCase() +
+			'-besedilo-akordi-chords-lyrics-tekst-' +
+			id
 		);
 	}
 	const settings = {
@@ -55,7 +58,7 @@ export default function SongCarousel({ songs }) {
 									<CardMedia
 										component="img"
 										alt={`${song.title} akordi pesmi ${song.author}`}
-										height="135"
+										height="160"
 										image={`${process.env
 											.NEXT_PUBLIC_WEBSERVER}/api/images/${song.youtube_image_name}`}
 										title={`${song.title} akordi pesmi ${song.author}`}

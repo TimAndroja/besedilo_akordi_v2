@@ -19,7 +19,11 @@ const useStyles = makeStyles({});
 
 export default function FeaturedArtistsList({ mostViewedArtists, mostSongsArtists }) {
 	function artistToUrl(string) {
-		return '/izvajalci/' + Diacritics.clean(string).replace(/[^a-z0-9]/gi, '-').toLowerCase();
+		return (
+			'/izvajalci/' +
+			Diacritics.clean(string).replace(/[^a-z0-9]/gi, '-').toLowerCase() +
+			'-pesmi-akordi-besedila-skladbe'
+		);
 	}
 
 	const classes = useStyles();

@@ -63,7 +63,11 @@ const useStyles = makeStyles({
 
 export default function index({ newSongs, curentlyPopularSongs, popularArtists, mostViewedSongs, mostSongsArtists }) {
 	function artistToUrl(string) {
-		return '/izvajalci/' + Diacritics.clean(string).replace(/[^a-z0-9]/gi, '-').toLowerCase();
+		return (
+			'/izvajalci/' +
+			Diacritics.clean(string).replace(/[^a-z0-9]/gi, '-').toLowerCase() +
+			'-pesmi-akordi-besedila-skladbe'
+		);
 	}
 
 	const classes = useStyles();
@@ -305,7 +309,7 @@ export default function index({ newSongs, curentlyPopularSongs, popularArtists, 
 					</Typography>
 				</Grid>
 				<Grid item sm={6}>
-					<Image src="/banner.jpg" alt="oglas1" width={700} height={100} />
+					<Image src="/banner.jpg" layout="responsive" alt="oglas1" width={700} height={100} />
 				</Grid>
 			</Grid>
 			<Typography

@@ -31,7 +31,10 @@ export default function Songbrowser(props) {
 	const classes = useStyles();
 	function songToUrl(title, id) {
 		return (
-			'/pesmi/' + Diacritics.clean(title).replace(/[^a-z0-9]/gi, '-').toLowerCase() + '-akordi-za-kitaro-' + id
+			'/pesmi/' +
+			Diacritics.clean(title).replace(/[^a-z0-9]/gi, '-').toLowerCase() +
+			'-besedilo-akordi-chords-lyrics-tekst-' +
+			id
 		);
 	}
 

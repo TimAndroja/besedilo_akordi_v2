@@ -37,7 +37,11 @@ const useStyles = makeStyles({
 
 export default function brskaj({ artists, songsNew, songsPopular, qry }) {
 	function artistToUrl(string) {
-		return '/izvajalci/' + Diacritics.clean(string).replace(/[^a-z0-9]/gi, '-').toLowerCase();
+		return (
+			'/izvajalci/' +
+			Diacritics.clean(string).replace(/[^a-z0-9]/gi, '-').toLowerCase() +
+			'-pesmi-akordi-besedila-skladbe'
+		);
 	}
 	const classes = useStyles();
 
@@ -105,7 +109,7 @@ export async function getServerSideProps(context) {
 	const songsNew = searchquerydata[1];
 	const songsPopular = searchquerydata[2];
 	const qry = context.query.query;
-	console.log(searchquerydata);
+
 	return {
 		props: { artists, songsNew, songsPopular, qry }
 		// Next.js will attempt to re-generate the page:
