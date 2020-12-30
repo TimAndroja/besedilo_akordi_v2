@@ -70,6 +70,33 @@ export default function index({ newSongs, curentlyPopularSongs, popularArtists, 
 		);
 	}
 
+	function responsiveYoutube(url) {
+		return (
+			<div
+				className="video"
+				style={{
+					position: 'relative',
+					paddingBottom: '56.25%' /* 16:9 */,
+					paddingTop: 25,
+					height: 0
+				}}
+			>
+				<iframe
+					style={{
+						position: 'absolute',
+						top: 0,
+						left: 0,
+						width: '100%',
+						height: '100%'
+					}}
+					src={url}
+					frameBorder="0"
+					allowFullScreen
+				/>
+			</div>
+		);
+	}
+
 	const classes = useStyles();
 
 	const blog = (
@@ -136,14 +163,7 @@ export default function index({ newSongs, curentlyPopularSongs, popularArtists, 
 				<AccordionDetails>
 					<Grid container>
 						<Grid container justify="center" className={classes.blogMedia}>
-							<iframe
-								src="https://www.youtube.com/embed/D6uG69aL3VQ"
-								frameBorder="0"
-								width="600"
-								height="400"
-								allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-								allowFullScreen
-							/>
+							{responsiveYoutube('https://www.youtube.com/embed/D6uG69aL3VQ')}
 						</Grid>
 						<Typography variant="h6" component="h3">
 							Vse najbolješ kitarska lekcija (Chords, Lyrics, Tabs)
@@ -179,14 +199,7 @@ export default function index({ newSongs, curentlyPopularSongs, popularArtists, 
 				<AccordionDetails>
 					<Grid container>
 						<Grid container justify="center" className={classes.blogMedia}>
-							<iframe
-								src="https://www.youtube.com/embed/Qdji1IbMIe0"
-								frameBorder="0"
-								width="600"
-								height="400"
-								allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-								allowFullScreen
-							/>
+							{responsiveYoutube('https://www.youtube.com/embed/Qdji1IbMIe0')}
 						</Grid>
 						<Typography variant="h6" component="h3">
 							Sreča na vrvici akordi in lekcija za kitaro, tablature (Chords, Lyrics, Tabs)
@@ -298,7 +311,7 @@ export default function index({ newSongs, curentlyPopularSongs, popularArtists, 
 			</section>
 
 			<Grid container style={{ marginTop: theme.spacing(6) }} spacing={6}>
-				<Grid item sm={6}>
+				<Grid item xs={12} md={6}>
 					<Typography variant="body1" color="textPrimary" gutterBottom>
 						SOME SEO:
 					</Typography>
@@ -308,7 +321,7 @@ export default function index({ newSongs, curentlyPopularSongs, popularArtists, 
 						pesmi.ablature (tabs) &amp; video spot vaše najlepše pesmi.
 					</Typography>
 				</Grid>
-				<Grid item sm={6}>
+				<Grid item xs={12} md={6}>
 					<Image src="/banner.jpg" layout="responsive" alt="oglas1" width={700} height={100} />
 				</Grid>
 			</Grid>
@@ -329,12 +342,12 @@ export default function index({ newSongs, curentlyPopularSongs, popularArtists, 
 
 			<Container disableGutters maxWidth="xl">
 				<Grid container className={classes.containerMargin} spacing={4}>
-					<Grid item xs={6}>
+					<Grid item xs={12} md={6}>
 						<Grid container>
 							<Image src="/oglas1.png" alt="oglas1" width={700} height={200} />
 						</Grid>
 					</Grid>
-					<Grid item xs={6}>
+					<Grid item xs={12} md={6}>
 						<div>
 							<Typography variant="h6" component="h3">
 								OPIS GLASBENEGA PORTALA ZA PESMI IN AKORDE:
@@ -384,7 +397,7 @@ export default function index({ newSongs, curentlyPopularSongs, popularArtists, 
 			</Container>
 			<Container maxWidth="lg" disableGutters className={classes.containerMargin}>
 				<Grid container spacing={10}>
-					<Grid item xs={6} component="section">
+					<Grid item xs={12} md={6} component="section">
 						<Link href="#">
 							<LinkMUI href="#">
 								<Typography gutterBottom variant="h6" component="h3">
@@ -392,9 +405,9 @@ export default function index({ newSongs, curentlyPopularSongs, popularArtists, 
 								</Typography>
 							</LinkMUI>
 						</Link>
-						<Container maxWidth={false}>{allTimePopularArtists(popularArtists)}</Container>
+						{allTimePopularArtists(popularArtists)}
 					</Grid>
-					<Grid item xs={6} component="section">
+					<Grid item xs={12} md={6} component="section">
 						<Link href="#">
 							<LinkMUI variant="h6" href="#">
 								<Typography gutterBottom variant="h6" component="h3">

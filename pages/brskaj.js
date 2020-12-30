@@ -93,11 +93,20 @@ export default function brskaj({ artists, songsNew, songsPopular, qry }) {
 
 	return (
 		<Layout>
-			<Typography gutterBottom variant="h4" component="h1">
-				Rezultati iskanja za poizvedbo: <strong>{qry}</strong>
-			</Typography>
-			{artists.length > 0 ? showArtists : <div>Ni izvajalcev za tvojo poizvedbo</div>}
-			{songsPopular.length > 0 ? showSongs : <div>Ni pesmi za tvojo poizvedbo</div>}
+			<Grid container>
+				<Grid item xs={12}>
+					<Typography gutterBottom variant="h4" component="h1">
+						Rezultati iskanja za poizvedbo: <strong>{qry}</strong>
+					</Typography>
+				</Grid>
+				<Grid item xs={12}>
+					{artists.length > 0 ? showArtists : <div>Ni izvajalcev za tvojo poizvedbo</div>}
+				</Grid>
+
+				<Grid item xs={12}>
+					{songsPopular.length > 0 ? showSongs : <div>Ni pesmi za tvojo poizvedbo</div>}
+				</Grid>
+			</Grid>
 		</Layout>
 	);
 }

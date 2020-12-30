@@ -95,7 +95,7 @@ function Artist({ songsNew, songsPopular, authorName }) {
 				<meta name="keywords" content={metaKeywords} />
 			</Head>
 			<Grid container spacing={8}>
-				<Grid item sm={8}>
+				<Grid item md={7} sm={6} xs={12}>
 					<Box marginBottom={3}>
 						<Typography variant="h4" component="h1">
 							<span style={{ color: theme.palette.secondary.main }}>
@@ -113,7 +113,7 @@ function Artist({ songsNew, songsPopular, authorName }) {
 					</Box>
 
 					<Grid container>
-						<Grid item sm={12}>
+						<Grid item xs={12}>
 							<Box marginBottom={2}>
 								<Typography component="p" variant="body2">
 									Na strani portala <strong>{authorName}</strong> pesmi akordi besedila skladbe
@@ -122,18 +122,18 @@ function Artist({ songsNew, songsPopular, authorName }) {
 								</Typography>
 							</Box>
 						</Grid>
-						<Grid item sm={12}>
+						<Grid item xs={12}>
 							<Typography component="h3" variant="overline" color="textSecondary">
 								{authorName} pesmi akordi besedila - Prilubljen video spot
 							</Typography>
 						</Grid>
 
-						<Grid item sm={5}>
+						<Grid item xs={12} sm={10} md={5}>
 							{responsiveYoutube}
 						</Grid>
 					</Grid>
 				</Grid>
-				<Grid item sm={4} style={{ margin: 'auto' }}>
+				<Grid item md={5} sm={6} xs={12} style={{ margin: 'auto' }}>
 					<Box>
 						<Box paddingLeft={0.2}>
 							<Typography component="h3" variant="overline" color="textSecondary">

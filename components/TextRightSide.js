@@ -22,7 +22,7 @@ export default function TextsRightSide({ songContent }) {
 	console.log(songContent);
 	const pdfDisplay = (
 		<Grid container>
-			<Grid item sm={12}>
+			<Grid item xs={12}>
 				<Typography variant="overline" component="h3" color="textSecondary">
 					{songContent.title} akordi pesmi in besedilo {songContent.author} - akordi
 				</Typography>

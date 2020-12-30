@@ -76,7 +76,7 @@ function Chords({ songData }) {
 				<meta name="keywords" content={metaKeywords} />
 			</Head>
 			<Grid container>
-				<Grid item sm={12}>
+				<Grid item xs={12}>
 					<Box marginBottom={3}>
 						<header>
 							<Typography variant="overline" component="h1">
@@ -105,11 +105,11 @@ function Chords({ songData }) {
 						</header>
 					</Box>
 				</Grid>
-				<Grid item sm={4}>
+				<Grid item xs={12} md={4}>
 					<ChordsLeftSide songContent={songData} />
 				</Grid>
-				<Grid item xl={2} />
-				<Grid item xl={6}>
+				<Grid item xs={12} md={1} xl={2} />
+				<Grid item xs={12} md={7} xl={6}>
 					{songData.pdf_file_name ? (
 						<PdfRightSide songContent={songData} />
 					) : (

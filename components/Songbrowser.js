@@ -77,7 +77,7 @@ export default function Songbrowser(props) {
 						<Link href={songToUrl(song.title, song.id_song)}>
 							<ListItem key={i} button>
 								<Grid container>
-									<Grid item xs={6} style={{ display: 'flex' }}>
+									<Grid item xs={5} style={{ display: 'flex' }}>
 										<ListItemAvatar>
 											<Avatar
 												alt={` ${song.author} - zbirka akordov`}
@@ -94,9 +94,9 @@ export default function Songbrowser(props) {
 											className={classes.listViews}
 										/>
 									</Grid>
-									<Grid item xs={1}>
+									<Grid item xs={2} sm={1}>
 										<Grid container>
-											<Grid item xs={3}>
+											<Grid item md={3} xs={6}>
 												<ListItemText
 													id={song.id_song}
 													secondary={<VisibilityIcon fontSize="small" />}
@@ -104,7 +104,7 @@ export default function Songbrowser(props) {
 												/>
 											</Grid>
 
-											<Grid item xs={9}>
+											<Grid item md={9} xs={6}>
 												<ListItemText
 													id={song.id_song}
 													secondary={song.views}

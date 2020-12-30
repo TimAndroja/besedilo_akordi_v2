@@ -12,13 +12,13 @@ const useStyles = makeStyles({
 	},
 	mainContentWrapper: {
 		paddingTop: theme.spacing(10),
-		paddingLeft: theme.spacing(4),
-		paddingRight: theme.spacing(4),
+		paddingLeft: theme.spacing(5),
+		paddingRight: theme.spacing(5),
 		margin: 0,
 		minHeight: 0,
 		minWidth: 0,
 
-		[theme.breakpoints.up('md')]: {
+		[theme.breakpoints.up('lg')]: {
 			paddingTop: theme.spacing(10),
 			paddingLeft: theme.spacing(10),
 			paddingRight: theme.spacing(10),

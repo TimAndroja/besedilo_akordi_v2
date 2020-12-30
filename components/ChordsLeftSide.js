@@ -170,14 +170,14 @@ export default function ChordsLeftSide({ songContent }) {
 
 	return (
 		<Grid container>
-			<Grid item sm={12} />
-			<Grid item sm={12}>
+			<Grid item xs={12} />
+			<Grid item xs={12}>
 				<Box marginBottom={3}>
 					<Grid container>
 						<Typography variant="overline" component="h3" color="textSecondary">
 							{songContent.title} {songContent.author} - Video spot
 						</Typography>
-						<Grid item sm={12}>
+						<Grid item xs={12}>
 							{responsiveYoutube}
 						</Grid>
 					</Grid>

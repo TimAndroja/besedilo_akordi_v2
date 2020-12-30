@@ -24,6 +24,7 @@ import MusicNoteIcon from '@material-ui/icons/MusicNote';
 import TextField from '@material-ui/core/TextField';
 import { Box } from '@material-ui/core';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 const useStyles = makeStyles((theme) => ({
 	AppBar: {
 		zIndex: theme.zIndex.drawer + 1
@@ -113,14 +114,21 @@ export default function Navbar() {
 		<nav className={classes.grow}>
 			<AppBar position="fixed" className={classes.AppBar}>
 				<Toolbar>
-					<IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="open drawer">
-						<MusicNoteIcon />
-					</IconButton>
-
-					<Typography className={classes.title} variant="h6" noWrap>
-						Besedilo-akordi.si
-					</Typography>
-
+					<Link href="/">
+						<IconButton
+							edge="start"
+							className={classes.menuButton}
+							color="inherit"
+							aria-label="open drawer"
+						>
+							<MusicNoteIcon />
+						</IconButton>
+					</Link>
+					<Link href="/">
+						<Typography className={classes.title} variant="h6" noWrap>
+							Besedilo-akordi.si
+						</Typography>
+					</Link>
 					<div className={classes.search}>
 						<div className={classes.searchIcon}>
 							<SearchIcon />
@@ -138,10 +146,10 @@ export default function Navbar() {
 						/>
 					</div>
 					<IconButton
+						disabled
 						edge="start"
 						className={classes.menuButton}
 						color="inherit"
-						aria-label="open drawer"
 						style={{ marginLeft: '5px' }}
 					>
 						<Brightness4Icon />

@@ -37,7 +37,7 @@ export default function Categories() {
 			<Paper>
 				<List>
 					<Grid container>
-						<Grid item xs={2}>
+						<Grid item xs={6} sm={4} md={3} lg={2}>
 							<Link href="/kategorija/bozicne-pesmi-bozicna-glasba">
 								<ListItem button>
 									<ListItemIcon>
@@ -47,7 +47,7 @@ export default function Categories() {
 								</ListItem>
 							</Link>
 						</Grid>
-						<Grid item xs={2}>
+						<Grid item xs={6} sm={4} md={3} lg={2}>
 							<Link href="/kategorija/hrvaske-dalmatinske-pesmi-hrvaska-dalmatinska-glasba">
 								<ListItem button>
 									<ListItemIcon>
@@ -58,7 +58,7 @@ export default function Categories() {
 							</Link>
 						</Grid>
 
-						<Grid item xs={2}>
+						<Grid item xs={6} sm={4} md={3} lg={2}>
 							<Link href="/kategorija/slovenske-ljudske-pesmi-ljudska-glasba">
 								<ListItem button>
 									<ListItemIcon>
@@ -68,7 +68,7 @@ export default function Categories() {
 								</ListItem>
 							</Link>
 						</Grid>
-						<Grid item xs={2}>
+						<Grid item xs={6} sm={4} md={3} lg={2}>
 							<Link href="/kategorija/narodno-zabavna-domaca-glasba">
 								<ListItem button>
 									<ListItemIcon>
@@ -78,7 +78,7 @@ export default function Categories() {
 								</ListItem>
 							</Link>
 						</Grid>
-						<Grid item xs={2}>
+						<Grid item xs={6} sm={4} md={3} lg={2}>
 							<Link href="/kategorija/slovenske-otroske-pesmi-za-otroke">
 								<ListItem button>
 									<ListItemIcon>
@@ -88,7 +88,7 @@ export default function Categories() {
 								</ListItem>
 							</Link>
 						</Grid>
-						<Grid item xs={2}>
+						<Grid item xs={6} sm={4} md={3} lg={2}>
 							<Link href="/kategorija/popularne-najlepse-pesmi-popularna-glasba">
 								<ListItem button>
 									<ListItemIcon>
@@ -98,7 +98,7 @@ export default function Categories() {
 								</ListItem>
 							</Link>
 						</Grid>
-						<Grid item xs={2}>
+						<Grid item xs={6} sm={4} md={3} lg={2}>
 							<Link href="/kategorija/pop-rock-gasba-ex-yu-yugo">
 								<ListItem button>
 									<ListItemIcon>
@@ -108,7 +108,7 @@ export default function Categories() {
 								</ListItem>
 							</Link>
 						</Grid>
-						<Grid item xs={2}>
+						<Grid item xs={6} sm={4} md={3} lg={2}>
 							<Link href="/kategorija/slovenska-popevka-plesna-glasba">
 								<ListItem button>
 									<ListItemIcon>
@@ -118,7 +118,7 @@ export default function Categories() {
 								</ListItem>
 							</Link>
 						</Grid>
-						<Grid item xs={2}>
+						<Grid item xs={6} sm={4} md={3} lg={2}>
 							<Link href="/kategorija/slovenske-pesmi">
 								<ListItem button>
 									<ListItemIcon>
@@ -128,7 +128,7 @@ export default function Categories() {
 								</ListItem>
 							</Link>
 						</Grid>
-						<Grid item xs={2}>
+						<Grid item xs={6} sm={4} md={3} lg={2}>
 							<Link href="/kategorija/ostalo-angleske-disco-pesmi-instrumentalna-klasicna-glasba">
 								<ListItem button>
 									<ListItemIcon>
@@ -138,7 +138,7 @@ export default function Categories() {
 								</ListItem>
 							</Link>
 						</Grid>
-						<Grid item xs={2}>
+						<Grid item xs={6} sm={4} md={3} lg={2}>
 							<Link href="/kategorija/">
 								<ListItem button>
 									<ListItemIcon>
@@ -148,7 +148,7 @@ export default function Categories() {
 								</ListItem>
 							</Link>
 						</Grid>
-						<Grid item xs={2}>
+						<Grid item xs={6} sm={4} md={3} lg={2}>
 							<Link href="/kategorija/ucenje-igranje-sola-kitare">
 								<ListItem button>
 									<ListItemIcon>

@@ -46,7 +46,7 @@ const useStyles = makeStyles({
 	},
 	sidebarWrapper: {
 		display: 'none',
-		[theme.breakpoints.up('md')]: {
+		[theme.breakpoints.up('lg')]: {
 			display: 'flex'
 		}
 	}
@@ -75,26 +75,50 @@ export default function Sidebar() {
 							</ListItem>
 						</Link>
 						<ListSubheader disableSticky>Promovirano: </ListSubheader>
-						{[ 'promocija1', 'promocija2' ].map((text, index) => (
-							<ListItem button key={text}>
-								<ListItemIcon>
-									<Star />
-								</ListItemIcon>
-								<ListItemText primary={text} />
-							</ListItem>
-						))}
+						<ListItem button disabled>
+							<ListItemIcon>
+								<Star />
+							</ListItemIcon>
+							<ListItemText primary={'promocija'} />
+						</ListItem>
+						<ListItem button disabled>
+							<ListItemIcon>
+								<Star />
+							</ListItemIcon>
+							<ListItemText primary={'promocija'} />
+						</ListItem>
+						<ListItem button disabled>
+							<ListItemIcon>
+								<Star />
+							</ListItemIcon>
+							<ListItemText primary={'promocija'} />
+						</ListItem>
 					</List>
 					<Divider />
 					<ListSubheader disableSticky>Ogledano: </ListSubheader>
 					<List>
-						{[ 'zgodovina1', 'zgodovina1', 'zgodovina3' ].map((text, index) => (
-							<ListItem button key={text}>
-								<ListItemIcon>
-									<QueueMusicIcon />
-								</ListItemIcon>
-								<ListItemText primary={text} />
-							</ListItem>
-						))}
+						<ListItem button disabled>
+							<ListItemIcon>
+								<QueueMusicIcon />
+							</ListItemIcon>
+							<ListItemText primary={'zgodovina'} />
+						</ListItem>
+					</List>
+					<List>
+						<ListItem button disabled>
+							<ListItemIcon>
+								<QueueMusicIcon />
+							</ListItemIcon>
+							<ListItemText primary={'zgodovina'} />
+						</ListItem>
+					</List>
+					<List>
+						<ListItem button disabled>
+							<ListItemIcon>
+								<QueueMusicIcon />
+							</ListItemIcon>
+							<ListItemText primary={'zgodovina'} />
+						</ListItem>
 					</List>
 					<Divider />
 				</div>
