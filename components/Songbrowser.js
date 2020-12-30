@@ -74,7 +74,7 @@ export default function Songbrowser(props) {
 			<List>
 				{props.popularSongs.length > 0 ? (
 					songDisplayArray[value - 1][page - 1].map((song, i) => (
-						<Link href={songToUrl(song.title, song.id_song)}>
+						<Link key={i} href={songToUrl(song.title, song.id_song)}>
 							<ListItem key={i} button>
 								<Grid container>
 									<Grid item xs={5} style={{ display: 'flex' }}>

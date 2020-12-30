@@ -1,6 +1,5 @@
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-
 import Head from 'next/head';
 import Layout from '../components/Layout';
 import SongCarousel from '../components/SongCarousel';
@@ -228,8 +227,8 @@ export default function index({ newSongs, curentlyPopularSongs, popularArtists, 
 		return (
 			<List dense>
 				{songs.map((song, i) => (
-					<Link href={artistToUrl(song.author)}>
-						<ListItem key={i} button>
+					<Link key={i} href={artistToUrl(song.author)}>
+						<ListItem button>
 							<ListItemAvatar>
 								<Avatar alt={` ${song.author} - zbirka akordov`} src={''} />
 							</ListItemAvatar>
@@ -250,8 +249,8 @@ export default function index({ newSongs, curentlyPopularSongs, popularArtists, 
 		return (
 			<List dense>
 				{songs.map((song, i) => (
-					<Link href={artistToUrl(song.author)}>
-						<ListItem key={i} button>
+					<Link key={i} href={artistToUrl(song.author)}>
+						<ListItem button>
 							<ListItemAvatar>
 								<Avatar
 									alt={`${song.author} popularni izvajalci pesmi akordov besedil`}
@@ -365,6 +364,7 @@ export default function index({ newSongs, curentlyPopularSongs, popularArtists, 
 							</p>
 							<Grid container>
 								<Button
+									disabled
 									variant="contained"
 									color="primary"
 									className={classes.button}

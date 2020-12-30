@@ -29,68 +29,64 @@ export default function FeaturedArtistsList({ mostViewedArtists, mostSongsArtist
 	const classes = useStyles();
 	return (
 		<Grid container spacing={10}>
-			<Grid item sm={6}>
+			<Grid item sm={6} xs={12}>
 				<Typography variant="h6">Izvajalci z največjo zbirko akordov:</Typography>
 				<Divider />
 
 				<List dense>
-					<Grid container>
-						{mostSongsArtists.map((artist, index) => {
-							const labelId = `checkbox-list-secondary-label-${1}`;
-							return (
-								<Grid item sm={6}>
-									<Link href={artistToUrl(artist.author)}>
-										<ListItem key={index} button>
-											<ListItemAvatar>
-												<Avatar
-													alt={artist.author + 'izvajalec akordov pesmi največja zbirka'}
-													src={`/`}
-												/>
-											</ListItemAvatar>
-											<ListItemText
-												id={labelId}
-												primary={artist.author}
-												secondary={`#${index + 1}`}
+					{mostSongsArtists.map((artist, index) => {
+						const labelId = `checkbox-list-secondary-label-${1}`;
+						return (
+							<Grid item key={index} sm={12}>
+								<Link href={artistToUrl(artist.author)}>
+									<ListItem button>
+										<ListItemAvatar>
+											<Avatar
+												alt={artist.author + 'izvajalec akordov pesmi največja zbirka'}
+												src={`/`}
 											/>
-											<ListItemSecondaryAction />
-										</ListItem>
-									</Link>
-								</Grid>
-							);
-						})}
-					</Grid>
+										</ListItemAvatar>
+										<ListItemText
+											id={labelId}
+											primary={artist.author}
+											secondary={`#${index + 1}`}
+										/>
+										<ListItemSecondaryAction />
+									</ListItem>
+								</Link>
+							</Grid>
+						);
+					})}
 				</List>
 			</Grid>
 
-			<Grid item sm={6}>
+			<Grid item sm={6} xs={12}>
 				<Typography variant="h6">Popularni izvajalci:</Typography>
 				<Divider />
 				<List dense>
-					<Grid container>
-						{mostViewedArtists.map((artist, index) => {
-							const labelId = `checkbox-list-secondary-label-${1}`;
-							return (
-								<Grid item sm={6}>
-									<Link href={artistToUrl(artist.author)}>
-										<ListItem key={index} button>
-											<ListItemAvatar>
-												<Avatar
-													alt={artist.author + 'izvajalec akordov pesmi najbolj gledani'}
-													src={`/static/images/avatar/${1}.jpg`}
-												/>
-											</ListItemAvatar>
-											<ListItemText
-												id={labelId}
-												primary={artist.author}
-												secondary={`#${index + 1}`}
+					{mostViewedArtists.map((artist, index) => {
+						const labelId = `checkbox-list-secondary-label-${1}`;
+						return (
+							<Grid item key={index} sm={12}>
+								<Link href={artistToUrl(artist.author)}>
+									<ListItem key={index} button>
+										<ListItemAvatar>
+											<Avatar
+												alt={artist.author + 'izvajalec akordov pesmi najbolj gledani'}
+												src={`/static/images/avatar/${1}.jpg`}
 											/>
-											<ListItemSecondaryAction />
-										</ListItem>
-									</Link>
-								</Grid>
-							);
-						})}
-					</Grid>
+										</ListItemAvatar>
+										<ListItemText
+											id={labelId}
+											primary={artist.author}
+											secondary={`#${index + 1}`}
+										/>
+										<ListItemSecondaryAction />
+									</ListItem>
+								</Link>
+							</Grid>
+						);
+					})}
 				</List>
 			</Grid>
 		</Grid>
