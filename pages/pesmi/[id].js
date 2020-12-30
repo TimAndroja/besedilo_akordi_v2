@@ -20,6 +20,8 @@ import Link from 'next/link';
 import MLink from '@material-ui/core/Link';
 import DefaultErrorPage from 'next/error';
 import Box from '@material-ui/core/Box';
+import useSWR from 'swr';
+
 const Diacritics = require('diacritic');
 const useStyles = makeStyles({
 	listWrapper: {
@@ -47,7 +49,9 @@ function artistToUrl(string) {
 	);
 }
 
-function Chords({ songData }) {
+function Chords({ songData, id }) {
+	const { data, error } = useSWR(`${process.env.NEXT_PUBLIC_WEBSERVER}/api/songs/content/${id}`, fetch);
+
 	// Render post...
 	if (!songData) {
 		return (
@@ -147,7 +151,7 @@ export async function getStaticProps({ params }) {
 	if (responded) songData = responded[0];
 
 	// Pass post data to the page via props
-	return { props: { songData } };
+	return { props: { songData, id } };
 }
 
 export default Chords;

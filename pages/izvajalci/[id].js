@@ -181,7 +181,7 @@ export async function getStaticProps({ params }) {
 	const authorName = songs[2];
 
 	// Pass post data to the page via props
-	return { props: { songsNew, songsPopular, authorName } };
+	return { props: { songsNew, songsPopular, authorName }, revalidate: 360 };
 }
 
 export default Artist;

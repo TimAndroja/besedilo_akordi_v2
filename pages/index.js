@@ -156,13 +156,15 @@ export default function index({ newSongs, curentlyPopularSongs, popularArtists, 
 			<Accordion component="article">
 				<AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header">
 					<Typography className={classes.heading}>
-						Vse najbolješ kitarska lekcija (Chords, Lyrics, Tabs)
+						Vse najboljše kitarska lekcija (Chords, Lyrics, Tabs)
 					</Typography>
 				</AccordionSummary>
 				<AccordionDetails>
 					<Grid container>
 						<Grid container justify="center" className={classes.blogMedia}>
-							{responsiveYoutube('https://www.youtube.com/embed/D6uG69aL3VQ')}
+							<Grid item xs={10}>
+								{responsiveYoutube('https://www.youtube.com/embed/D6uG69aL3VQ')}
+							</Grid>
 						</Grid>
 						<Typography variant="h6" component="h3">
 							Vse najbolješ kitarska lekcija (Chords, Lyrics, Tabs)
@@ -174,10 +176,28 @@ export default function index({ newSongs, curentlyPopularSongs, popularArtists, 
 								glasbenega znanja, napotkov in trikov pri učenju kitare in še mnogo več.
 							</p>
 							<p>
-								Lekcijo je izdelal Tugomir Androja, ki že mnogo let vodilni avtor in vodja{' '}
-								<a href="https://ansambel-objem.si/poroka-band-za-poroko/" target="_blank">
-									ansambla band za poroko Objem
-								</a>.
+								Lekcijo za portal BESEDILO-AKORDI pripravil{' '}
+								<LinkMUI
+									href="https://ansambel-objem.si/ucenje-sola-kitare-sintesajzerja"
+									target="blank"
+								>
+									glasbeni mentor Tugomir Androja
+								</LinkMUI>
+								, vodja ansambla skupine Objem. Glasbena{' '}
+								<LinkMUI href="https://ansambel-objem.si/" target="_blank">
+									skupina Objem
+								</LinkMUI>{' '}
+								je že mnogo let znana na področju igranja porok, kot vodilni slovenski{' '}
+								<LinkMUI href="https://ansambel-objem.si/poroka-band-za-poroko/" target="_blank">
+									poročni band
+								</LinkMUI>
+								. Glasbeniki – muzikanti glasbene skupine Objem, že tretje desetletje razveseljujejo
+								svoje naročnike po celotni Sloveniji in jih naročniki z veseljem najamejo, kot dober{' '}
+								<LinkMUI href="https://ansambel-objem.si/abraham-ansambel-za-abrahama/" target="_blank">
+									bend ansambel za poroko abrahama
+								</LinkMUI>
+								, kateri z dobro glasbo in pozitivno energijo naredi njihov dogodek še bistveno bolj
+								prijeten in svečan.
 							</p>
 							<p>
 								Literaturo za učenje kitare najdeš tukaj{' '}
@@ -198,7 +218,9 @@ export default function index({ newSongs, curentlyPopularSongs, popularArtists, 
 				<AccordionDetails>
 					<Grid container>
 						<Grid container justify="center" className={classes.blogMedia}>
-							{responsiveYoutube('https://www.youtube.com/embed/Qdji1IbMIe0')}
+							<Grid item xs={10}>
+								{responsiveYoutube('https://www.youtube.com/embed/Qdji1IbMIe0')}
+							</Grid>
 						</Grid>
 						<Typography variant="h6" component="h3">
 							Sreča na vrvici akordi in lekcija za kitaro, tablature (Chords, Lyrics, Tabs)
@@ -310,18 +332,23 @@ export default function index({ newSongs, curentlyPopularSongs, popularArtists, 
 			</section>
 
 			<Grid container style={{ marginTop: theme.spacing(6) }} spacing={6}>
-				<Grid item xs={12} md={6}>
+				<Grid item xs={12} md={7}>
 					<Typography variant="body1" color="textPrimary" gutterBottom>
-						SOME SEO:
+						Dobrodošli na portal (izdelovanje)
 					</Typography>
 					<Typography variant="caption" component="p" align="justify">
-						Glasbeni portal Pesmi Besedilo Akordi Tablature je baza pesmi v kateri lahko poiščete: Akorde
-						(Chords), Besedilo (lyrics, text, tekst), Tablature (tabs) &amp; video spot vaše najlepše
-						pesmi.ablature (tabs) &amp; video spot vaše najlepše pesmi.
+						Portal za besedila in akorde je še vedno v stopnji izdelovanja in so zato nekatere funkcije
+						onemogočene ali pa se še implementirajo. Dokler dokončujemo portal vam kjub temu želimo prijetno
+						uporabo. Če najdete na strani kakšno napako, bomo veseli, če nam jo posredujete na email:{' '}
+						<LinkMUI href="mailto:tim.androja@gmail.com" target="_blank">
+							tim.androja@gmail.com{' '}
+						</LinkMUI>
 					</Typography>
 				</Grid>
-				<Grid item xs={12} md={6}>
-					<Image src="/banner.jpg" layout="responsive" alt="oglas1" width={700} height={100} />
+				<Grid item xs={12} md={5}>
+					<LinkMUI href="https://ansambel-objem.si/" target="_blank">
+						<Image src="/banner.jpg" layout="responsive" alt="oglas1" width={600} height={150} />{' '}
+					</LinkMUI>
 				</Grid>
 			</Grid>
 			<Typography
@@ -477,6 +504,6 @@ export async function getStaticProps() {
 		// Next.js will attempt to re-generate the page:
 		// - When a request comes in
 		// - At most once every second
-		revalidate: 5 // In seconds
+		revalidate: 360 // In seconds
 	};
 }

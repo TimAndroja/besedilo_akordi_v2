@@ -19,7 +19,7 @@ const useStyles = makeStyles({
 export default function TextsRightSide({ songContent }) {
 	const classes = useStyles();
 	const text_lines = songContent.text_content.split(/\r?\n/);
-	console.log(songContent);
+
 	const pdfDisplay = (
 		<Grid container>
 			<Grid item xs={12}>
