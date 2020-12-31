@@ -15,6 +15,7 @@ import theme from '../styles/theme';
 import Avatar from '@material-ui/core/Avatar';
 import Link from 'next/link';
 const Diacritics = require('diacritic');
+import GridList from '@material-ui/core/GridList';
 const useStyles = makeStyles({});
 
 export default function FeaturedArtistsList({ mostViewedArtists, mostSongsArtists }) {
@@ -33,11 +34,11 @@ export default function FeaturedArtistsList({ mostViewedArtists, mostSongsArtist
 				<Typography variant="h6">Izvajalci z največjo zbirko akordov:</Typography>
 				<Divider />
 
-				<List dense>
+				<GridList cols={2} cellHeight="auto">
 					{mostSongsArtists.map((artist, index) => {
 						const labelId = `checkbox-list-secondary-label-${1}`;
 						return (
-							<Grid item key={index} sm={12}>
+							<Grid item key={index} sm={12} md={6}>
 								<Link href={artistToUrl(artist.author)}>
 									<ListItem button>
 										<ListItemAvatar>
@@ -57,17 +58,17 @@ export default function FeaturedArtistsList({ mostViewedArtists, mostSongsArtist
 							</Grid>
 						);
 					})}
-				</List>
+				</GridList>
 			</Grid>
 
 			<Grid item sm={6} xs={12}>
 				<Typography variant="h6">Popularni izvajalci:</Typography>
 				<Divider />
-				<List dense>
+				<GridList cols={2} cellHeight="auto">
 					{mostViewedArtists.map((artist, index) => {
 						const labelId = `checkbox-list-secondary-label-${1}`;
 						return (
-							<Grid item key={index} sm={12}>
+							<Grid item key={index} sm={12} md={6}>
 								<Link href={artistToUrl(artist.author)}>
 									<ListItem key={index} button>
 										<ListItemAvatar>
@@ -87,7 +88,7 @@ export default function FeaturedArtistsList({ mostViewedArtists, mostSongsArtist
 							</Grid>
 						);
 					})}
-				</List>
+				</GridList>
 			</Grid>
 		</Grid>
 	);

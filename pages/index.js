@@ -346,7 +346,7 @@ export default function index({ newSongs, curentlyPopularSongs, popularArtists, 
 					</Typography>
 				</Grid>
 				<Grid item xs={12} md={5}>
-					<LinkMUI href="https://ansambel-objem.si/" target="_blank">
+					<LinkMUI href="https://ansambel-objem.si/" target="_blank" rel="nofollow">
 						<Image src="/banner.jpg" layout="responsive" alt="oglas1" width={600} height={150} />{' '}
 					</LinkMUI>
 				</Grid>
