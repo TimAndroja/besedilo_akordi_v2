@@ -1,5 +1,5 @@
 module.exports = {
 	images: {
-		domains: [ 'besedilo-akordi.si' ]
+		domains: [ 'besedilo-akordi.si', 'localhost' ]
 	}
 };

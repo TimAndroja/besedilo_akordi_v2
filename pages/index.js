@@ -309,7 +309,7 @@ export default function index({ newSongs, curentlyPopularSongs, popularArtists, 
 				/>
 			</Head>
 			<Typography gutterBottom variant="h4" component="h1">
-				BESEDILA PESMI AKORDI ZA KITARO:
+				<strong>BESEDILO PESMI AKORDI TABLATURE </strong>
 			</Typography>
 			<Typography
 				gutterBottom
@@ -318,11 +318,11 @@ export default function index({ newSongs, curentlyPopularSongs, popularArtists, 
 				color="secondary"
 				style={{ marginTop: theme.spacing(1) }}
 			>
-				BESEDILA PESMI AKORDI ZA KITARO BESEDILA PESMI AKORDI ZA KITARO:
+				BESEDILO PESMI AKORDI TABLATURE ZA KITARO (Lyrics Chords Text Tekst Tabs):
 			</Typography>
 
 			<Typography variant="caption" component="p" align="justify">
-				Glasbeni portal Pesmi Besedilo Akordi Tablature je baza pesmi v kateri lahko poiščete: Akorde (Chords),
+				Glasbeni portal Besedilo Pesmi Akordi Tablature je baza pesmi v kateri lahko poiščete: Akorde (Chords),
 				Besedilo (lyrics, text, tekst), Tablature (tabs) &amp; video spot vaše najlepše pesmi. Poleg gledanja
 				video spota lahko prepevate besedilo, akordi pa so namenjeni za kitaro, ukulele, harmoniko, klavir.
 			</Typography>

@@ -116,9 +116,9 @@ function Artist({ songsNew, songsPopular, authorName }) {
 						<Grid item xs={12}>
 							<Box marginBottom={2}>
 								<Typography component="p" variant="body2">
-									Na strani portala <strong>{authorName}</strong> pesmi akordi besedila skladbe
-									tablature tekst songs lyrics se nahaja baza pesmi in besedil s pripadajočimi akordi
-									glasbenega izvajalca {authorName}{' '}
+									Na strani portala izvajalca <strong>{authorName}</strong> se nahajajo pesmi akordi
+									besedila skladbe tablature tekst songs lyrics se nahaja baza pesmi in besedil s
+									pripadajočimi akordi glasbenega izvajalca {authorName}{' '}
 								</Typography>
 							</Box>
 						</Grid>

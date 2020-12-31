@@ -140,15 +140,18 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
 	// params contains the post `id`.
 	// If the route is like /posts/1, then params.id is 1
-	const splitLink = params.id.split('-');
-	const id = splitLink[splitLink.length - 1];
+	const url = params.id;
+	const id = params.id.split('-')[params.id.split('-').length - 1];
 
-	const res = await fetch(`${process.env.NEXT_PUBLIC_WEBSERVER}/api/songs/content/${id}`);
-	let responded = null;
-	responded = await res.json().catch((err) => console.log(err));
-
+	const res = await fetch(`${process.env.NEXT_PUBLIC_WEBSERVER}/api/songs/content/${url}`);
 	let songData = null;
-	if (responded) songData = responded[0];
+	if ((await res.status) == 400) {
+		return { props: { songData, id } };
+	}
+
+	const responded = await res.json().catch((err) => console.log(err));
+
+	songData = responded[0];
 
 	// Pass post data to the page via props
 	return { props: { songData, id } };
