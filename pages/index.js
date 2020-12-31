@@ -26,6 +26,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Image from 'next/image';
 import Link from 'next/link';
 import LinkMUI from '@material-ui/core/Link';
+import GridList from '@material-ui/core/GridList';
 const Diacritics = require('diacritic');
 const useStyles = makeStyles({
 	cardContent: {
@@ -247,48 +248,51 @@ export default function index({ newSongs, curentlyPopularSongs, popularArtists, 
 
 	function allTimeMostSongsArtists(songs) {
 		return (
-			<List dense>
+			<GridList cols={2} cellHeight="auto">
 				{songs.map((song, i) => (
-					<Link key={i} href={artistToUrl(song.author)}>
-						<ListItem button>
-							<ListItemAvatar>
-								<Avatar alt={` ${song.author} - zbirka akordov`} src={''} />
-							</ListItemAvatar>
-							<ListItemText id={song.id_song} primary={song.author} secondary={`#${i + 1}`} />
-							<ListItemText
-								id={song.id_song}
-								secondary={song.countSongs + ' pesmi'}
-								className={classes.listViews}
-							/>
-						</ListItem>
-					</Link>
+					<Grid item key={index} key={i} sm={12} md={6}>
+						<Link key={i} href={artistToUrl(song.author)}>
+							<ListItem button>
+								<ListItemAvatar>
+									<Avatar alt={` ${song.author} - zbirka akordov`} src={''} />
+								</ListItemAvatar>
+								<ListItemText
+									id={song.id_song}
+									primary={song.author}
+									secondary={song.countSongs + ' pesmi'}
+								/>
+							</ListItem>
+						</Link>
+					</Grid>
 				))}
-			</List>
+			</GridList>
 		);
 	}
 
 	function allTimePopularArtists(songs) {
 		return (
-			<List dense>
+			<GridList cols={2} cellHeight="auto">
 				{songs.map((song, i) => (
-					<Link key={i} href={artistToUrl(song.author)}>
-						<ListItem button>
-							<ListItemAvatar>
-								<Avatar
-									alt={`${song.author} popularni izvajalci pesmi akordov besedil`}
-									src={`${process.env.NEXT_PUBLIC_WEBSERVER}/api/images/${song.youtube_image_name}`}
+					<Grid item key={index} key={i} sm={12} md={6}>
+						<Link href={artistToUrl(song.author)}>
+							<ListItem button>
+								<ListItemAvatar>
+									<Avatar
+										alt={`${song.author} popularni izvajalci pesmi akordov besedil`}
+										src={`${process.env
+											.NEXT_PUBLIC_WEBSERVER}/api/images/${song.youtube_image_name}`}
+									/>
+								</ListItemAvatar>
+								<ListItemText
+									id={song.id_song}
+									primary={song.author}
+									secondary={song.sumViews + ' ogledov'}
 								/>
-							</ListItemAvatar>
-							<ListItemText id={song.id_song} primary={song.author} secondary={`#${i + 1}`} />
-							<ListItemText
-								id={song.id_song}
-								secondary={song.sumViews + ' ogledov'}
-								className={classes.listViews}
-							/>
-						</ListItem>
-					</Link>
+							</ListItem>
+						</Link>
+					</Grid>
 				))}
-			</List>
+			</GridList>
 		);
 	}
 

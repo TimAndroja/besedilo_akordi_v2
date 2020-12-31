@@ -8,11 +8,21 @@ import Typography from '@material-ui/core/Typography';
 import theme from '../styles/theme';
 const useStyles = makeStyles({
 	textContent: {
+		fontSize: '1.6vw',
 		position: 'relative',
 		fontFamily: 'Roboto Mono, monospace',
 		whiteSpace: 'pre',
 		paddingTop: theme.spacing(2),
-		paddingBottom: theme.spacing(2)
+		paddingBottom: theme.spacing(2),
+
+		[theme.breakpoints.up('xs')]: {
+			fontSize: '14px',
+			position: 'relative',
+			fontFamily: 'Roboto Mono, monospace',
+			whiteSpace: 'pre',
+			paddingTop: theme.spacing(2),
+			paddingBottom: theme.spacing(2)
+		}
 	}
 });
 

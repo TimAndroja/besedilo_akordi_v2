@@ -37,6 +37,7 @@ export default function FeaturedArtistsList({ mostViewedArtists, mostSongsArtist
 				<GridList cols={2} cellHeight="auto">
 					{mostSongsArtists.map((artist, index) => {
 						const labelId = `checkbox-list-secondary-label-${1}`;
+
 						return (
 							<Grid item key={index} sm={12} md={6}>
 								<Link href={artistToUrl(artist.author)}>
@@ -50,7 +51,7 @@ export default function FeaturedArtistsList({ mostViewedArtists, mostSongsArtist
 										<ListItemText
 											id={labelId}
 											primary={artist.author}
-											secondary={`#${index + 1}`}
+											secondary={`${artist.countSongs} pesmi`}
 										/>
 										<ListItemSecondaryAction />
 									</ListItem>
@@ -67,6 +68,7 @@ export default function FeaturedArtistsList({ mostViewedArtists, mostSongsArtist
 				<GridList cols={2} cellHeight="auto">
 					{mostViewedArtists.map((artist, index) => {
 						const labelId = `checkbox-list-secondary-label-${1}`;
+						console.log(artist);
 						return (
 							<Grid item key={index} sm={12} md={6}>
 								<Link href={artistToUrl(artist.author)}>
@@ -80,7 +82,7 @@ export default function FeaturedArtistsList({ mostViewedArtists, mostSongsArtist
 										<ListItemText
 											id={labelId}
 											primary={artist.author}
-											secondary={`#${index + 1}`}
+											secondary={`${artist.sumViews} ogledov`}
 										/>
 										<ListItemSecondaryAction />
 									</ListItem>
