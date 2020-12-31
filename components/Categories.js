@@ -147,12 +147,14 @@ export default function Categories() {
 							</ListItem>
 						</Grid>
 						<Grid item xs={6} sm={4} md={3} lg={2}>
-							<ListItem button disabled>
-								<ListItemIcon>
-									<SchoolIcon />
-								</ListItemIcon>
-								<ListItemText primary="Kitarske lekcije" />
-							</ListItem>
+							<Link href="/kategorija/ucenje-igranje-sola-kitare">
+								<ListItem button>
+									<ListItemIcon>
+										<SchoolIcon />
+									</ListItemIcon>
+									<ListItemText primary="Kitarske lekcije" />
+								</ListItem>
+							</Link>
 						</Grid>
 					</Grid>
 				</List>
