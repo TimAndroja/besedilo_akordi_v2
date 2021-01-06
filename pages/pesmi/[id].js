@@ -47,17 +47,16 @@ function Chords({ songData, id, url }) {
 		() => {
 			if (songData) {
 				if (localStorage['history'] == null) {
-					const historyArray = [ [ [ songData.title ], [ url ] ] ];
+					const historyArray = [ [ [ songData.title + ' ' + songData.author ], [ url ] ] ];
 					localStorage.setItem('history', JSON.stringify(historyArray));
 				} else {
 					const history = localStorage.getItem('history');
 					let historyArray = JSON.parse(history);
-					const newInput = [ [ songData.title ], [ url ] ];
+					const newInput = [ [ songData.title + ' - ' + songData.author ], [ url ] ];
 					historyArray = historyArray.filter((e) => {
-						console.log(JSON.stringify(e) !== JSON.stringify(newInput));
 						return JSON.stringify(e) !== JSON.stringify(newInput);
 					});
-					if (historyArray.length > 4) {
+					if (historyArray.length > 10) {
 						historyArray.pop();
 					}
 					historyArray.splice(0, 0, newInput);

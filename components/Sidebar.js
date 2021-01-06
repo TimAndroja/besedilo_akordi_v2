@@ -47,6 +47,7 @@ const useStyles = makeStyles({
 export default function Sidebar() {
 	const classes = useStyles();
 	const [ historyArray, setHistoryArray ] = useState([]);
+
 	useEffect(
 		() => {
 			function updateHistory() {
@@ -58,11 +59,9 @@ export default function Sidebar() {
 					const history = localStorage.getItem('history');
 					let historyArray = JSON.parse(history);
 					setHistoryArray(historyArray);
-					console.log(historyArray.length);
 				}
 			}
 			updateHistory();
-			window.addEventListener('storage', updateHistory);
 		},
 		[ setHistoryArray ]
 	);
@@ -103,10 +102,10 @@ export default function Sidebar() {
 					</List>
 					<Divider />
 					<ListSubheader disableSticky>Ogledano: </ListSubheader>
-					{historyArray.map((song) => {
-						return (
-							<List dense>
-								<Link href={`/pesmi/${song[1]}`}>
+					<List dense>
+						{historyArray.map((song, i) => {
+							return (
+								<Link href={`/pesmi/${song[1]}`} key={i}>
 									<ListItem button>
 										<ListItemIcon>
 											<QueueMusicIcon />
@@ -117,10 +116,9 @@ export default function Sidebar() {
 										/>
 									</ListItem>
 								</Link>
-							</List>
-						);
-					})}
-
+							);
+						})}
+					</List>
 					<Divider />
 				</div>
 			</Drawer>
