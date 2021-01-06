@@ -1,19 +1,10 @@
-import React from 'react';
+import { React, useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import QueueMusicIcon from '@material-ui/icons/QueueMusic';
-import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
-import SchoolIcon from '@material-ui/icons/School';
-import ChildCareIcon from '@material-ui/icons/ChildCare';
 import Star from '@material-ui/icons/Star';
 import ListSubheader from '@material-ui/core/ListSubheader';
-import LanguageIcon from '@material-ui/icons/Language';
-import AudiotrackIcon from '@material-ui/icons/Audiotrack';
-import RecordVoiceOverIcon from '@material-ui/icons/RecordVoiceOver';
-import AcUnitIcon from '@material-ui/icons/AcUnit';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -22,6 +13,7 @@ import Divider from '@material-ui/core/Divider';
 import HomeIcon from '@material-ui/icons/Home';
 import Link from 'next/link';
 import theme from '../styles/theme';
+
 const drawerWidth = 250;
 const useStyles = makeStyles({
 	drawer: {
@@ -54,6 +46,27 @@ const useStyles = makeStyles({
 
 export default function Sidebar() {
 	const classes = useStyles();
+	const [ historyArray, setHistoryArray ] = useState([]);
+	useEffect(
+		() => {
+			function updateHistory() {
+				if (localStorage['history'] == null) {
+					console.log('no history');
+
+					localStorage.setItem('history', JSON.stringify(historyArray));
+				} else {
+					const history = localStorage.getItem('history');
+					let historyArray = JSON.parse(history);
+					setHistoryArray(historyArray);
+					console.log(historyArray.length);
+				}
+			}
+			updateHistory();
+			window.addEventListener('storage', updateHistory);
+		},
+		[ setHistoryArray ]
+	);
+
 	return (
 		<aside className={classes.sidebarWrapper}>
 			<Drawer
@@ -87,39 +100,27 @@ export default function Sidebar() {
 							</ListItemIcon>
 							<ListItemText primary={'promocija'} />
 						</ListItem>
-						<ListItem button disabled>
-							<ListItemIcon>
-								<Star />
-							</ListItemIcon>
-							<ListItemText primary={'promocija'} />
-						</ListItem>
 					</List>
 					<Divider />
 					<ListSubheader disableSticky>Ogledano: </ListSubheader>
-					<List>
-						<ListItem button disabled>
-							<ListItemIcon>
-								<QueueMusicIcon />
-							</ListItemIcon>
-							<ListItemText primary={'zgodovina'} />
-						</ListItem>
-					</List>
-					<List>
-						<ListItem button disabled>
-							<ListItemIcon>
-								<QueueMusicIcon />
-							</ListItemIcon>
-							<ListItemText primary={'zgodovina'} />
-						</ListItem>
-					</List>
-					<List>
-						<ListItem button disabled>
-							<ListItemIcon>
-								<QueueMusicIcon />
-							</ListItemIcon>
-							<ListItemText primary={'zgodovina'} />
-						</ListItem>
-					</List>
+					{historyArray.map((song) => {
+						return (
+							<List dense>
+								<Link href={`/pesmi/${song[1]}`}>
+									<ListItem button>
+										<ListItemIcon>
+											<QueueMusicIcon />
+										</ListItemIcon>
+										<ListItemText
+											primary={song[0]}
+											style={{ whiteSpace: 'nowrap', overflow: 'hidden' }}
+										/>
+									</ListItem>
+								</Link>
+							</List>
+						);
+					})}
+
 					<Divider />
 				</div>
 			</Drawer>

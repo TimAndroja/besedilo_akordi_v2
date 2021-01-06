@@ -1,20 +1,13 @@
 import Layout from '../../components/Layout';
-import React from 'react';
+import { React, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import ChordsLeftSide from '../../components/ChordsLeftSide';
 import PdfRightSide from '../../components/PdfRightSide';
 import TextRightSide from '../../components/TextRightSide';
-import Image from 'next/image';
 import theme from '../../styles/theme';
-import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import Avatar from '@material-ui/core/Avatar';
 import Head from 'next/head';
 import Link from 'next/link';
 import MLink from '@material-ui/core/Link';
@@ -49,8 +42,33 @@ function artistToUrl(string) {
 	);
 }
 
-function Chords({ songData, id }) {
-	const { data, error } = useSWR(`${process.env.NEXT_PUBLIC_WEBSERVER}/api/songs/content/${id}`, fetch);
+function Chords({ songData, id, url }) {
+	useEffect(
+		() => {
+			if (songData) {
+				if (localStorage['history'] == null) {
+					const historyArray = [ [ [ songData.title ], [ url ] ] ];
+					localStorage.setItem('history', JSON.stringify(historyArray));
+				} else {
+					const history = localStorage.getItem('history');
+					let historyArray = JSON.parse(history);
+					const newInput = [ [ songData.title ], [ url ] ];
+					historyArray = historyArray.filter((e) => {
+						console.log(JSON.stringify(e) !== JSON.stringify(newInput));
+						return JSON.stringify(e) !== JSON.stringify(newInput);
+					});
+					if (historyArray.length > 4) {
+						historyArray.pop();
+					}
+					historyArray.splice(0, 0, newInput);
+					localStorage.setItem('history', JSON.stringify(historyArray));
+				}
+			}
+		},
+		[ url ]
+	);
+
+	//add a view
 
 	// Render post...
 	if (!songData) {
@@ -63,6 +81,7 @@ function Chords({ songData, id }) {
 			</div>
 		);
 	}
+	const { data, error } = useSWR(`${process.env.NEXT_PUBLIC_WEBSERVER}/api/songs/addview/${id}`, fetch);
 	const classes = useStyles();
 
 	const metaDescription = `${songData.title.toUpperCase()}Besedilo Akordi za kitaro. Izvajalec pesmi: ${songData.author.toUpperCase()}. Priljubljena besedila (Lyrics, Tekst, text) in Akordi (chords) pesmi. Portal besedilo-akordi.si`;
@@ -154,7 +173,7 @@ export async function getStaticProps({ params }) {
 	songData = responded[0];
 
 	// Pass post data to the page via props
-	return { props: { songData, id } };
+	return { props: { songData, id, url } };
 }
 
 export default Chords;

@@ -1,15 +1,11 @@
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 import Head from 'next/head';
 import Layout from '../components/Layout';
 import SongCarousel from '../components/SongCarousel';
 import Categories from '../components/Categories';
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
@@ -277,11 +273,7 @@ export default function index({ newSongs, curentlyPopularSongs, popularArtists, 
 						<Link href={artistToUrl(song.author)}>
 							<ListItem button>
 								<ListItemAvatar>
-									<Avatar
-										alt={`${song.author} popularni izvajalci pesmi akordov besedil`}
-										src={`${process.env
-											.NEXT_PUBLIC_WEBSERVER}/api/images/${song.youtube_image_name}`}
-									/>
+									<Avatar alt={`${song.author} popularni izvajalci pesmi akordov besedil`} src={``} />
 								</ListItemAvatar>
 								<ListItemText
 									id={song.id_song}

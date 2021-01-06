@@ -1,32 +1,19 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
 import Grid from '@material-ui/core/Grid';
 import { Typography } from '@material-ui/core';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
-import QueueMusicIcon from '@material-ui/icons/QueueMusic';
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 import SchoolIcon from '@material-ui/icons/School';
 import ChildCareIcon from '@material-ui/icons/ChildCare';
-import Star from '@material-ui/icons/Star';
-import ListSubheader from '@material-ui/core/ListSubheader';
 import LanguageIcon from '@material-ui/icons/Language';
 import AudiotrackIcon from '@material-ui/icons/Audiotrack';
 import RecordVoiceOverIcon from '@material-ui/icons/RecordVoiceOver';
 import AcUnitIcon from '@material-ui/icons/AcUnit';
-import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import Divider from '@material-ui/core/Divider';
-import HomeIcon from '@material-ui/icons/Home';
 import Link from 'next/link';
-
-import Avatar from '@material-ui/core/Avatar';
 
 export default function Categories() {
 	return (

@@ -1,17 +1,13 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
+
 import Grid from '@material-ui/core/Grid';
-import { Typography } from '@material-ui/core';
-import List from '@material-ui/core/List';
+import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import theme from '../styles/theme';
 import Avatar from '@material-ui/core/Avatar';
 import Link from 'next/link';
 const Diacritics = require('diacritic');
@@ -68,7 +64,7 @@ export default function FeaturedArtistsList({ mostViewedArtists, mostSongsArtist
 				<GridList cols={2} cellHeight="auto">
 					{mostViewedArtists.map((artist, index) => {
 						const labelId = `checkbox-list-secondary-label-${1}`;
-						console.log(artist);
+
 						return (
 							<Grid item key={index} sm={12} md={6}>
 								<Link href={artistToUrl(artist.author)}>

@@ -5,8 +5,6 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
-const useStyles = makeStyles({});
-
 export default function PdfRightSide({ songContent }) {
 	const imageUrl = songContent.pdf_file_name.substr(0, songContent.pdf_file_name.lastIndexOf('.')) + '.jpg';
 	const pdfDisplay = (
