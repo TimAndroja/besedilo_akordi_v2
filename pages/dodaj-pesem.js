@@ -81,7 +81,9 @@ export default function AddChords() {
 			body: formData,
 			headers: contenttype,
 			method: 'POST'
-		}).then((res) => console.log(res));
+		}).then((res) => {
+			res.status == 200 ? window.location.reload() : console.log(res);
+		});
 	};
 	return (
 		<Layout>
