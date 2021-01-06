@@ -3,25 +3,18 @@ import { React, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-import Songbrowser from '../components/Songbrowser';
+
 import theme from '../styles/theme';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import Paper from '@material-ui/core/Paper';
+
 import TextField from '@material-ui/core/TextField';
 import Checkbox from '@material-ui/core/Checkbox';
-import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
-import CheckBoxIcon from '@material-ui/icons/CheckBox';
-import FormGroup from '@material-ui/core/FormGroup';
+
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Link from 'next/link';
+import Head from 'next/head';
 import Button from '@material-ui/core/Button';
 import FormLabel from '@material-ui/core/FormLabel';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
-import KeyboardVoiceIcon from '@material-ui/icons/KeyboardVoice';
+
 import SendIcon from '@material-ui/icons/Send';
 
 const useStyles = makeStyles({
@@ -92,6 +85,10 @@ export default function AddChords() {
 	};
 	return (
 		<Layout>
+			<Head>
+				<meta key="robots" name="robots" content="noindex,follow" />
+				<meta key="googlebot" name="googlebot" content="noindex,follow" />
+			</Head>
 			<Grid container>
 				<Grid item xs={6}>
 					<Grid item xs={12}>
