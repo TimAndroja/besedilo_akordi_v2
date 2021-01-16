@@ -32,11 +32,11 @@ const useStyles = makeStyles({
 		paddingBottom: theme.spacing(1.4)
 	},
 	containerMargin: {
-		marginTop: theme.spacing(10),
+		marginTop: theme.spacing(6),
 		padding: 0
 	},
 	carouselMargin: {
-		marginBottom: theme.spacing(8),
+		marginBottom: theme.spacing(6),
 		marginTop: theme.spacing(2)
 	},
 
@@ -250,7 +250,7 @@ export default function index({ newSongs, curentlyPopularSongs, popularArtists, 
 						<Link key={i} href={artistToUrl(song.author)}>
 							<ListItem button>
 								<ListItemAvatar>
-									<Avatar alt={` ${song.author} - zbirka akordov`} src={''} />
+									<Avatar alt={`${song.author} - zbirka akordov`} src={'test'} />
 								</ListItemAvatar>
 								<ListItemText
 									id={song.id_song}
@@ -304,16 +304,10 @@ export default function index({ newSongs, curentlyPopularSongs, popularArtists, 
 					"
 				/>
 			</Head>
-			<Typography gutterBottom variant="h4" component="h1">
+			<Typography gutterBottom variant="h4" component="h1" style={{ color: theme.palette.secondary.main }}>
 				<strong>BESEDILO PESMI AKORDI TABLATURE </strong>
 			</Typography>
-			<Typography
-				gutterBottom
-				variant="h6"
-				component="h2"
-				color="secondary"
-				style={{ marginTop: theme.spacing(1) }}
-			>
+			<Typography gutterBottom variant="h6" component="h2" style={{ marginTop: theme.spacing(1) }}>
 				BESEDILO PESMI AKORDI TABLATURE ZA KITARO (Lyrics Chords Text Tekst Tabs):
 			</Typography>
 
@@ -322,31 +316,6 @@ export default function index({ newSongs, curentlyPopularSongs, popularArtists, 
 				Besedilo (lyrics, text, tekst), Tablature (tabs) &amp; video spot vaše najlepše pesmi. Poleg gledanja
 				video spota lahko prepevate besedilo, akordi pa so namenjeni za kitaro, ukulele, harmoniko, klavir.
 			</Typography>
-
-			<section style={{ marginTop: theme.spacing(4) }}>
-				<Categories />
-			</section>
-
-			<Grid container style={{ marginTop: theme.spacing(6) }} spacing={6}>
-				<Grid item xs={12} md={7}>
-					<Typography variant="body1" color="textPrimary" gutterBottom>
-						Dobrodošli na portal (izdelovanje)
-					</Typography>
-					<Typography variant="caption" component="p" align="justify">
-						Portal za besedila in akorde je še vedno v stopnji izdelovanja in so zato nekatere funkcije
-						onemogočene ali pa se še implementirajo. Dokler dokončujemo portal vam kjub temu želimo prijetno
-						uporabo. Če najdete na strani kakšno napako, bomo veseli, če nam jo posredujete na email:{' '}
-						<LinkMUI href="mailto:tim.androja@gmail.com" target="_blank">
-							tim.androja@gmail.com{' '}
-						</LinkMUI>
-					</Typography>
-				</Grid>
-				<Grid item xs={12} md={5}>
-					<LinkMUI href="https://ansambel-objem.si/" target="_blank" rel="nofollow">
-						<Image src="/banner.jpg" layout="responsive" alt="oglas1" width={600} height={150} />{' '}
-					</LinkMUI>
-				</Grid>
-			</Grid>
 			<Typography
 				gutterBottom
 				variant="h6"
@@ -361,15 +330,13 @@ export default function index({ newSongs, curentlyPopularSongs, popularArtists, 
 			<Container disableGutters maxWidth={false} className={classes.carouselMargin}>
 				<SongCarousel songs={newSongs} />
 			</Container>
+			<section>
+				<Categories />
+			</section>
 
 			<Container disableGutters maxWidth="xl">
 				<Grid container className={classes.containerMargin} spacing={4}>
-					<Grid item xs={12} md={6}>
-						<Grid container>
-							<Image src="/oglas1.png" alt="oglas1" width={700} height={200} />
-						</Grid>
-					</Grid>
-					<Grid item xs={12} md={6}>
+					<Grid item xs={12} md={7}>
 						<div>
 							<Typography variant="h6" component="h3">
 								OPIS GLASBENEGA PORTALA ZA PESMI IN AKORDE:
@@ -397,6 +364,17 @@ export default function index({ newSongs, curentlyPopularSongs, popularArtists, 
 								</Button>
 							</Grid>
 						</div>
+					</Grid>
+					<Grid item xs={12} md={5} spacing={4}>
+						<LinkMUI href="https://ansambel-objem.si/" target="_blank" rel="nofollow">
+							<Image
+								src="/banner-objem.jpg"
+								layout="responsive"
+								alt="oglas1"
+								width={600}
+								height={200}
+							/>{' '}
+						</LinkMUI>
 					</Grid>
 				</Grid>
 			</Container>

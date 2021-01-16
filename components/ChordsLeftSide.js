@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import theme from '../styles/theme';
 import Grid from '@material-ui/core/Grid';
 import Link from 'next/link';
+import Image from 'next/image';
 import MLink from '@material-ui/core/Link';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
@@ -191,11 +192,16 @@ export default function ChordsLeftSide({ songContent }) {
 						</Grid>
 					</Grid>
 				</Box>
-				<Box marginBottom={3}>
+				<Box marginBottom={2}>
 					<Typography component="p" variant="caption">
 						{songContent.title} Besedilo Akordi (lyrics, text, text chords). Izvajalec: {songContent.author}{' '}
 						Besedilo pesmi z akordi (prijemi) za kitaro, ukulele, klavir, harmoniko.
 					</Typography>
+				</Box>
+				<Box marginBottom={2}>
+					<MLink href="https://ansambel-objem.si/" target="_blank" rel="nofollow">
+						<Image src="/banner-objem.jpg" layout="responsive" alt="oglas1" width={600} height={180} />{' '}
+					</MLink>
 				</Box>
 				<Box marginBottom={1}>{kategorije}</Box>
 				<Box marginBottom={1}>{description}</Box>

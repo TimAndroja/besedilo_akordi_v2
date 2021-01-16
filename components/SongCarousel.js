@@ -11,14 +11,46 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import ChevronLeftRoundedIcon from '@material-ui/icons/ChevronLeftRounded';
+import ChevronRightRoundedIcon from '@material-ui/icons/ChevronRightRounded';
 const Diacritics = require('diacritic');
 const useStyles = makeStyles({
 	cardWrapper: {
 		outline: 'none',
 		paddingLeft: theme.spacing(1),
 		paddingRight: theme.spacing(1)
+	},
+	cardContent: {
+		paddingTop: theme.spacing(1.2),
+		paddingBottom: theme.spacing(1.2)
 	}
 });
+
+function SampleNextArrow(props) {
+	const { className, style, onClick } = props;
+	return (
+		<ChevronRightRoundedIcon
+			className={className}
+			color="primary"
+			fontSize="large"
+			style={{ ...style }}
+			onClick={onClick}
+		/>
+	);
+}
+
+function SamplePrevArrow(props) {
+	const { className, style, onClick } = props;
+	return (
+		<ChevronLeftRoundedIcon
+			className={className}
+			color="primary"
+			fontSize="large"
+			style={{ ...style }}
+			onClick={onClick}
+		/>
+	);
+}
 
 export default function SongCarousel({ songs }) {
 	const classes = useStyles();
@@ -33,19 +65,21 @@ export default function SongCarousel({ songs }) {
 	const settings = {
 		dots: true,
 		infinite: true,
+		lazyLoad: true,
 		arrows: true,
-		speed: 1000,
+		speed: 800,
 		slidesToShow: 4,
 		slidesToScroll: 4,
 		autoplay: false,
+		nextArrow: <SampleNextArrow />,
+		prevArrow: <SamplePrevArrow />,
+
 		responsive: [
 			{
 				breakpoint: 1300,
 				settings: {
 					slidesToShow: 3,
-					slidesToScroll: 3,
-					infinite: true,
-					dots: true
+					slidesToScroll: 3
 				}
 			},
 			{
@@ -53,7 +87,8 @@ export default function SongCarousel({ songs }) {
 				settings: {
 					slidesToShow: 2,
 					slidesToScroll: 2,
-					initialSlide: 2
+					initialSlide: 2,
+					dots: false
 				}
 			}
 		]
@@ -69,7 +104,7 @@ export default function SongCarousel({ songs }) {
 									<CardMedia
 										component="img"
 										alt={`${song.title} akordi pesmi ${song.author}`}
-										height="160"
+										height="140"
 										image={`${process.env
 											.NEXT_PUBLIC_WEBSERVER}/api/images/${song.youtube_image_name}`}
 										title={`${song.title} akordi pesmi ${song.author}`}

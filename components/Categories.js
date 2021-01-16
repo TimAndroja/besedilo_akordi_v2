@@ -18,7 +18,7 @@ import Link from 'next/link';
 export default function Categories() {
 	return (
 		<nav>
-			<Typography gutterBottom variant="h6" color="primary">
+			<Typography gutterBottom variant="h6" color="secondary">
 				KATEGORIJE:
 			</Typography>
 			<Paper>
