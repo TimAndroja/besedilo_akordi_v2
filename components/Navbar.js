@@ -91,7 +91,7 @@ export default function Navbar() {
 
 	function handleKeyDown(event) {
 		if (event.keyCode === 13) {
-			router.push(`/brskaj?query=${searchInput}`);
+			router.push(`/brskaj?query=${encodeURIComponent(searchInput)}`);
 		}
 	}
 

@@ -110,7 +110,9 @@ export default function brskaj({ artists, songsNew, songsPopular, qry }) {
 }
 
 export async function getServerSideProps(context) {
-	const res = await fetch(`${process.env.NEXT_PUBLIC_WEBSERVER}/api/songs/search?query=${context.query.query}`);
+	const res = await fetch(
+		`${process.env.NEXT_PUBLIC_WEBSERVER}/api/songs/search?query=${encodeURIComponent(context.query.query)}`
+	);
 	const searchquerydata = await res.json();
 	const artists = searchquerydata[0];
 	const songsNew = searchquerydata[1];
