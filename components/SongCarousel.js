@@ -33,7 +33,10 @@ function SampleNextArrow(props) {
 			className={className}
 			color="primary"
 			fontSize="large"
-			style={{ ...style }}
+			style={{
+				...style,
+				color: theme.palette.primary.main
+			}}
 			onClick={onClick}
 		/>
 	);
@@ -46,7 +49,7 @@ function SamplePrevArrow(props) {
 			className={className}
 			color="primary"
 			fontSize="large"
-			style={{ ...style }}
+			style={{ ...style, color: theme.palette.primary.main }}
 			onClick={onClick}
 		/>
 	);

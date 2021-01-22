@@ -365,7 +365,7 @@ export default function index({ newSongs, curentlyPopularSongs, popularArtists, 
 							</Grid>
 						</div>
 					</Grid>
-					<Grid item xs={12} md={5} spacing={4}>
+					<Grid item xs={12} md={5}>
 						<LinkMUI href="https://ansambel-objem.si/" target="_blank" rel="nofollow">
 							<Image
 								src="/banner-objem.jpg"

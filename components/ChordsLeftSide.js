@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ChordDiagram from '../components/ChordDiagram';
 const Diacritics = require('diacritic');
 const useStyles = makeStyles({
 	formControl: {
@@ -202,6 +203,9 @@ export default function ChordsLeftSide({ songContent }) {
 					<MLink href="https://ansambel-objem.si/" target="_blank" rel="nofollow">
 						<Image src="/banner-objem.jpg" layout="responsive" alt="oglas1" width={600} height={180} />{' '}
 					</MLink>
+				</Box>
+				<Box marginBottom={2}>
+					<ChordDiagram />
 				</Box>
 				<Box marginBottom={1}>{kategorije}</Box>
 				<Box marginBottom={1}>{description}</Box>
