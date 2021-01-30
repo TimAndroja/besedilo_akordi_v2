@@ -48,7 +48,7 @@ export default function narodne_pesmi({ newestSongs, popularSongs, mostSongsArti
 				gutterBottom
 				variant="subtitle1"
 				component="h2"
-				color="secondary"
+				color="primary"
 				style={{ marginTop: theme.spacing(3) }}
 			>
 				<strong> NARODNO ZABAVNA DOMAČA GLASBA</strong> Besedila (Tekst, Text, Lyrics), Akordi prijemi (Chords),

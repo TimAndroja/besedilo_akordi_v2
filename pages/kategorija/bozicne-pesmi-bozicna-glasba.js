@@ -48,7 +48,7 @@ export default function bozicne_pesmi({ newestSongs, popularSongs, mostSongsArti
 				gutterBottom
 				variant="subtitle1"
 				component="h2"
-				color="secondary"
+				color="primary"
 				style={{ marginTop: theme.spacing(3) }}
 			>
 				<strong>BOŽIČNE PESMI BOŽIČNA</strong> GLASBA ZIMSKE PESMI Besedila (Tekst, Text, Lyrics), Akordi

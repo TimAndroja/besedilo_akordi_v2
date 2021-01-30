@@ -51,7 +51,7 @@ export default function hrvaske_pesmi({ newestSongs, popularSongs, mostSongsArti
 				gutterBottom
 				variant="subtitle1"
 				component="h2"
-				color="secondary"
+				color="primary"
 				style={{ marginTop: theme.spacing(3) }}
 			>
 				<strong>HRVAŠKE DALMATINSKE PESMI</strong> HRVAŠKA DALMATINSKA GLASBA najlepše pesmi, uspešnice,

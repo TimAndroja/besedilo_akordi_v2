@@ -123,7 +123,7 @@ export default function ChordDiagram(props) {
 
 	return (
 		<div>
-			<Paper elevation={4}>
+			<Paper elevation={0} style={{ backgroundColor: 'whitesmoke' }}>
 				<Box>
 					<Tabs
 						style={{ backgroundColor: theme.palette.background.default }}
@@ -161,7 +161,7 @@ export default function ChordDiagram(props) {
 										}}
 									>
 										{instrumentArray[0].keys.map((chord, i) => (
-											<MenuItem value={chord} index={i}>
+											<MenuItem value={chord} key={i}>
 												{chord}
 											</MenuItem>
 										))}

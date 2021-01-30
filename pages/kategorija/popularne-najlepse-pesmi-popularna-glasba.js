@@ -48,7 +48,7 @@ export default function popularne_pesmi({ newestSongs, popularSongs, mostSongsAr
 				gutterBottom
 				variant="subtitle1"
 				component="h2"
-				color="secondary"
+				color="primary"
 				style={{ marginTop: theme.spacing(3) }}
 			>
 				<strong>POPULARNE NAJLEPŠE PESMI</strong> POPULARNA GLASBA Besedila (Tekst, Text, Lyrics), Akordi

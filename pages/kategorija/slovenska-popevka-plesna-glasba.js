@@ -48,7 +48,7 @@ export default function popevka_pesmi({ newestSongs, popularSongs, mostSongsArti
 				gutterBottom
 				variant="subtitle1"
 				component="h2"
-				color="secondary"
+				color="primary"
 				style={{ marginTop: theme.spacing(3) }}
 			>
 				<strong>SLOVENSKE PESMI</strong> SLOVENSKA ZABAVNA GLASBA: Besedilo (Tekst, Text, Lyrics), Akordi

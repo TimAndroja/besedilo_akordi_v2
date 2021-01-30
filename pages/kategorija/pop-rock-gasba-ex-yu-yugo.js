@@ -48,7 +48,7 @@ export default function pop_rock_pesmi({ newestSongs, popularSongs, mostSongsArt
 				gutterBottom
 				variant="subtitle1"
 				component="h2"
-				color="secondary"
+				color="primary"
 				style={{ marginTop: theme.spacing(3) }}
 			>
 				<strong>POP ROCK GLASBA</strong> | Ex yu yugo rock dobre najboljše najlepše pesmi, Besedila (Tekst,

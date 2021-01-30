@@ -13,7 +13,7 @@ import Divider from '@material-ui/core/Divider';
 import HomeIcon from '@material-ui/icons/Home';
 import Link from 'next/link';
 import theme from '../styles/theme';
-
+import Typography from '@material-ui/core/Typography';
 const drawerWidth = 250;
 const useStyles = makeStyles({
 	drawer: {
@@ -102,20 +102,19 @@ export default function Sidebar() {
 					</List>
 					<Divider />
 					<ListSubheader disableSticky>Ogledano: </ListSubheader>
-					<List dense>
+					<List>
 						{historyArray.map((song, i) => {
 							return (
-								<Link href={`/pesmi/${song[1]}`} key={i}>
-									<ListItem button>
-										<ListItemIcon>
-											<QueueMusicIcon />
-										</ListItemIcon>
-										<ListItemText
-											primary={song[0]}
-											style={{ whiteSpace: 'nowrap', overflow: 'hidden' }}
-										/>
-									</ListItem>
-								</Link>
+								<ListItem button dense>
+									<ListItemIcon>
+										<QueueMusicIcon />
+									</ListItemIcon>
+									<Link href={`/pesmi/${song[1]}`} key={i}>
+										<Typography>
+											<ListItemText primary={song[0]} />
+										</Typography>
+									</Link>
+								</ListItem>
 							);
 						})}
 					</List>

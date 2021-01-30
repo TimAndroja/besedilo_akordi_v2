@@ -102,7 +102,7 @@ function Chords({ songData, id, url }) {
 					<Box marginBottom={3}>
 						<header>
 							<Typography variant="overline" component="h1">
-								<strong style={{ color: theme.palette.secondary.main }}>
+								<strong style={{ color: theme.palette.primary.main }}>
 									{songData.title.toUpperCase()}
 								</strong>{' '}
 								Besedilo Akordi (lyrics, text, tabs, chords) <strong>-</strong>{' '}
@@ -119,7 +119,7 @@ function Chords({ songData, id, url }) {
 							</Box>
 
 							<Typography variant="h4" component="h2" gutterBottom>
-								<strong style={{ color: theme.palette.secondary.main }}>
+								<strong style={{ color: theme.palette.primary.main }}>
 									{songData.title.toUpperCase()}
 								</strong>{' '}
 								<strong>BESEDILO AKORDI (TEXT, TEKST, CHORDS, TABS, TABLATURE, LYRICS)</strong>

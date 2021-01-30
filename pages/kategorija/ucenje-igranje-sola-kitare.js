@@ -48,7 +48,7 @@ export default function slovenske_pesmi({ newestSongs, popularSongs, mostSongsAr
 				gutterBottom
 				variant="subtitle1"
 				component="h2"
-				color="secondary"
+				color="primary"
 				style={{ marginTop: theme.spacing(3) }}
 			>
 				<strong>UČENJE IGRANJE ŠOLA KITARE</strong> Besedila, Akordi, E glasbena šola kitare na daljavo, Kako se

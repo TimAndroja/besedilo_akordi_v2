@@ -1,7 +1,7 @@
 import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import { Typography } from '@material-ui/core';
+
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import LibraryBooksIcon from '@material-ui/icons/LibraryBooks';
 import SchoolIcon from '@material-ui/icons/School';
@@ -14,14 +14,12 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Link from 'next/link';
+import theme from '../styles/theme';
 
 export default function Categories() {
 	return (
 		<nav>
-			<Typography gutterBottom variant="h6" color="secondary">
-				KATEGORIJE:
-			</Typography>
-			<Paper>
+			<Paper elevation={1} style={{ backgroundColor: theme.palette.secondary.main }}>
 				<List>
 					<Grid container>
 						<Grid item xs={6} sm={4} md={3} lg={2}>

@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Layout from '../components/Layout';
 import SongCarousel from '../components/SongCarousel';
+import SongCarouselSmall from '../components/SongCarouselSmall';
 import Categories from '../components/Categories';
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
@@ -23,6 +24,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import LinkMUI from '@material-ui/core/Link';
 import GridList from '@material-ui/core/GridList';
+import Box from '@material-ui/core/Box';
+import Hidden from '@material-ui/core/Hidden';
+
 const Diacritics = require('diacritic');
 const useStyles = makeStyles({
 	cardContent: {
@@ -32,12 +36,11 @@ const useStyles = makeStyles({
 		paddingBottom: theme.spacing(1.4)
 	},
 	containerMargin: {
-		marginTop: theme.spacing(6),
+		marginTop: theme.spacing(4),
 		padding: 0
 	},
 	carouselMargin: {
-		marginBottom: theme.spacing(6),
-		marginTop: theme.spacing(2)
+		marginBottom: theme.spacing(4)
 	},
 
 	blogMedia: {
@@ -273,7 +276,10 @@ export default function index({ newSongs, curentlyPopularSongs, popularArtists, 
 						<Link href={artistToUrl(song.author)}>
 							<ListItem button>
 								<ListItemAvatar>
-									<Avatar alt={`${song.author} popularni izvajalci pesmi akordov besedil`} src={``} />
+									<Avatar
+										alt={`${song.author} popularni izvajalci pesmi akordov besedil`}
+										src={`test`}
+									/>
 								</ListItemAvatar>
 								<ListItemText
 									id={song.id_song}
@@ -304,156 +310,184 @@ export default function index({ newSongs, curentlyPopularSongs, popularArtists, 
 					"
 				/>
 			</Head>
-			<Typography gutterBottom variant="h4" component="h1" style={{ color: theme.palette.secondary.main }}>
-				<strong>BESEDILO PESMI AKORDI TABLATURE </strong>
-			</Typography>
-			<Typography gutterBottom variant="h6" component="h2" style={{ marginTop: theme.spacing(1) }}>
-				BESEDILO PESMI AKORDI TABLATURE ZA KITARO (Lyrics Chords Text Tekst Tabs):
-			</Typography>
+			<Box marginTop={0}>
+				<Box>
+					<Typography variant="h1" component="h1" align="center">
+						<strong>BESEDILO PESMI AKORDI TABLATURE </strong>
+					</Typography>
+				</Box>
 
-			<Typography variant="caption" component="p" align="justify">
-				Glasbeni portal Besedilo Pesmi Akordi Tablature je baza pesmi v kateri lahko poiščete: Akorde (Chords),
-				Besedilo (lyrics, text, tekst), Tablature (tabs) &amp; video spot vaše najlepše pesmi. Poleg gledanja
-				video spota lahko prepevate besedilo, akordi pa so namenjeni za kitaro, ukulele, harmoniko, klavir.
-			</Typography>
-			<Typography
-				gutterBottom
-				variant="h6"
-				component="h3"
-				color="secondary"
-				style={{ marginTop: theme.spacing(4) }}
-			>
-				NOVO DODANI AKORDI:
-			</Typography>
-			<Divider />
-
-			<Container disableGutters maxWidth={false} className={classes.carouselMargin}>
-				<SongCarousel songs={newSongs} />
-			</Container>
-			<section>
+				<Box marginTop={1.5}>
+					<Divider />
+					<Typography variant="overline" align="center" component="h2">
+						BESEDILO PESMI AKORDI TABLATURE ZA KITARO (Lyrics Chords Text Tekst Tabs)
+					</Typography>
+					<Divider />
+				</Box>
+			</Box>
+			<Box component="section" marginTop={5}>
 				<Categories />
-			</section>
-
-			<Container disableGutters maxWidth="xl">
-				<Grid container className={classes.containerMargin} spacing={4}>
-					<Grid item xs={12} md={7}>
-						<div>
-							<Typography variant="h6" component="h3">
-								OPIS GLASBENEGA PORTALA ZA PESMI IN AKORDE:
-							</Typography>
-							<p>
-								<Typography variant="body2" component="p" align="justify">
-									PESMI GLASBA BESEDILA AKORDI za kitaro aktualnih ansamblov, bandov, glasbenih
-									skupin, glasbenikov in pevcev. Za vas smo izdelali glasbeni portal, na katerem lahko
-									istočasno gledate videospot ter spremljate besedilo, akorde in tablaturo vaše
-									prilubljene skladbe. Vabimo vas, da tudi vi prispevate vaše pesmi z akordi in
-									besedilom ter povezavo do ustreznega videa in tako pomagate tudi drugim pri igranju
-									in učenju na vaše pesmi. Naj vam bo naš portal v pomoč in vam želimo veliko
-									glasbenih užitkov.
-								</Typography>
-							</p>
-							<Grid container>
-								<Button
-									disabled
-									variant="contained"
-									color="primary"
-									className={classes.button}
-									endIcon={<AddIcon />}
-								>
-									Dodaj Akorde
-								</Button>
+			</Box>
+			<Box marginTop={5}>
+				<Typography variant="overline">NOVO DODANO:</Typography>
+				<Divider />
+				<Container disableGutters maxWidth={false} className={classes.carouselMargin}>
+					<SongCarousel songs={newSongs} />
+				</Container>
+			</Box>
+			<Box marginTop={9}>
+				<Grid container>
+					<Grid container spacing={8}>
+						<Grid item xs={12} sm={6}>
+							<Box>
+								<Typography variant="overline">NAJBOLJ GLEDANI:</Typography>
+								<Divider />
+								{allTimePopularArtists(popularArtists)}
+							</Box>
+						</Grid>
+						<Hidden xsDown>
+							<Grid item sm={6}>
+								<Box>
+									<Typography variant="overline">NAJVEČJA ZBIRKA:</Typography>
+									<Divider />
+									{allTimeMostSongsArtists(mostSongsArtists)}
+								</Box>
 							</Grid>
-						</div>
+						</Hidden>
 					</Grid>
-					<Grid item xs={12} md={5}>
-						<LinkMUI href="https://ansambel-objem.si/" target="_blank" rel="nofollow">
-							<Image
-								src="/banner-objem.jpg"
-								layout="responsive"
-								alt="oglas1"
-								width={600}
-								height={200}
-							/>{' '}
-						</LinkMUI>
+
+					<Grid container spacing={8} style={{ marginTop: theme.spacing(6) }}>
+						<Grid item xs={12} md={6}>
+							<Box>
+								<Container disableGutters maxWidth={false}>
+									<Typography variant="overline">POPULARNO TA TEDEN:</Typography>
+									<Divider />
+									<Container disableGutters maxWidth={false} className={classes.carouselMargin}>
+										<SongCarouselSmall songs={curentlyPopularSongs} />
+									</Container>
+								</Container>
+							</Box>
+						</Grid>
+						<Grid item xs={12} md={6}>
+							<Box>
+								<Typography variant="overline">OPIS PORTALA</Typography>
+								<Divider />
+								<Box marginTop={1}>
+									<Typography gutterBottom variant="body2" component="p" align="justify">
+										PESMI GLASBA BESEDILA AKORDI za kitaro aktualnih ansamblov, bandov, glasbenih
+										skupin, glasbenikov in pevcev. Za vas smo izdelali glasbeni portal, na katerem
+										lahko istočasno gledate videospot ter spremljate besedilo, akorde in tablaturo
+										vaše prilubljene skladbe.
+									</Typography>
+									<Typography variant="body2" component="p" align="justify">
+										Vabimo vas, da tudi vi prispevate vaše pesmi z akordi in besedilom ter povezavo
+										do ustreznega videa in tako pomagate tudi drugim pri igranju in učenju na vaše
+										pesmi. Naj vam bo naš portal v pomoč in vam želimo veliko glasbenih užitkov.
+									</Typography>
+									<Box textAlign="center" marginTop={1}>
+										<Button
+											fullWidth
+											disabled
+											variant="contained"
+											color="primary"
+											className={classes.button}
+											endIcon={<AddIcon />}
+										>
+											Dodaj Akorde
+										</Button>
+									</Box>
+								</Box>
+							</Box>
+						</Grid>
+					</Grid>
+					<Grid container spacing={8} style={{ marginTop: theme.spacing(6) }}>
+						<Grid item xs={12} md={6}>
+							<Box>
+								<Container disableGutters maxWidth={false}>
+									<Typography variant="overline">NAJVEČKRAT OGLEDANO:</Typography>
+									<Divider />
+									<Container disableGutters maxWidth={false} className={classes.carouselMargin}>
+										<SongCarouselSmall songs={mostViewedSongs} />
+									</Container>
+								</Container>
+							</Box>
+						</Grid>
+						<Grid item xs={12} md={6}>
+							<Box marginTop={3.4}>
+								<LinkMUI href="https://ansambel-objem.si/" target="_blank" rel="nofollow">
+									<Image
+										src="/banner-objem.jpg"
+										layout="responsive"
+										alt="oglas1"
+										width={600}
+										height={200}
+									/>{' '}
+								</LinkMUI>
+							</Box>
+						</Grid>
 					</Grid>
 				</Grid>
-			</Container>
-			<Container disableGutters maxWidth={false}>
-				<Typography variant="h6" component="h3" className={classes.containerMargin} color="secondary">
-					POPULARNO TA TEDEN:
-				</Typography>
-				<Divider />
-				<Container disableGutters maxWidth={false} className={classes.carouselMargin}>
-					<SongCarousel songs={curentlyPopularSongs} />
-				</Container>
-			</Container>
-			<Container disableGutters maxWidth={false}>
-				<Typography variant="h6" component="h3" className={classes.containerMargin} color="secondary">
-					NAJVEČKRAT OGLEDANI AKORDI:
-				</Typography>
-				<Divider />
-				<Container disableGutters maxWidth={false} className={classes.carouselMargin}>
-					<SongCarousel songs={mostViewedSongs} />
-				</Container>
-			</Container>
-			<Container maxWidth="lg" disableGutters className={classes.containerMargin}>
-				<Grid container spacing={10}>
-					<Grid item xs={12} md={6} component="section">
-						<Link href="#">
-							<LinkMUI href="#">
-								<Typography gutterBottom variant="h6" component="h3">
-									NAJBOLJ POPULARNI IZVAJALCI:
-								</Typography>
-							</LinkMUI>
-						</Link>
-						{allTimePopularArtists(popularArtists)}
-					</Grid>
-					<Grid item xs={12} md={6} component="section">
-						<Link href="#">
-							<LinkMUI variant="h6" href="#">
-								<Typography gutterBottom variant="h6" component="h3">
-									IZVAJALCI Z NAJVEČ AKORDI:
-								</Typography>
-							</LinkMUI>
-						</Link>
-						{allTimeMostSongsArtists(mostSongsArtists)}
+			</Box>
+
+			<Box marginTop={8}>
+				<Grid container spacing={9}>
+					<Grid item xs={12}>
+						<Grid container spacing={4}>
+							<Grid item xs={12}>
+								<Box>
+									<Typography variant="overline">DODATNE IINFORMACIJE</Typography>
+									<Divider />
+									<Box marginTop={1}>
+										<Typography gutterBottom variant="body2" component="p" align="justify">
+											Glasbeni portal Besedilo Pesmi Akordi Tablature je baza pesmi v kateri lahko
+											poiščete: Akorde (Chords), Besedilo (lyrics, text, tekst), Tablature (tabs)
+											&amp; video spot vaše najlepše pesmi. Poleg gledanja video spota lahko
+											prepevate besedilo, akordi pa so namenjeni za kitaro, ukulele, harmoniko,
+											klavir.
+										</Typography>
+										<Typography gutterBottom variant="body2" component="p" align="justify">
+											AKORDI ZA KITARO IN BESEDILA PESMI popularnih aktualnih ansamblov, bandov,
+											glasbenih skupin, glasbenikov in pevcev. Glasbeni portal je namenjen vsem
+											ljubiteljem slovenske in ostale glasbe, ki želijo poleg besedila posamezne
+											pesmi imeti še pripadajoče akorde za to pesem. Akordi vam bodo v pomoč pri
+											učenju: kitare, klaviature, klavirja, sintesajzerja, harmonike ipd. tako da
+											lahko svojo priljubljeno pesem pojete in istočasno spremljate na svojem
+											glasbenem instrumentu. Določene pesmi poleg prijemov za kitaro vsebujejo
+											tudi tablature za kitaro katere veliko kitaristov uporablja namesto not, da
+											pridobi lažjo in hitrejšo orientacijo. Na portalu so zbrana raznovrstna
+											besedila pesmi z akordi, zato sva jih razvrstila v 8 glasbenih skupin:
+											Slovenske pesmi, Angleške pesmi, Otroške pesmice, Božične pesmi, Hrvaške
+											pesmi, Ljudske pesmi, Slovenska popevka, in Narodno zabavna glasba. Zaradi
+											enostavnost iskanja lahko določeno pesem najdete v različnih glasbenih
+											skupinah npr: Pesem V dolini tihi spada pod v katregoriji Narodno zabavna
+											glasba in Slovenske pesmi.
+										</Typography>
+										<Typography gutterBottom variant="body2" component="p" align="justify">
+											Posebnost glasbenega portala AKORDI ZA KITARO BESEDILA pesmi je ta, da na
+											njem lahko istočasno gledate videospot ter spremljate besedilo, akorde in
+											tablaturo vaše prilubljene skladbe. Vabimo vas, da tudi vi prispevate
+											priljubljene pesmi z akordi in besedilom ter povezavo do ustreznega videa.
+											Naj vam bo naš portal v pomoč pri igranju kitare, klaviature, harmonike
+											oziroma drugega akordičnega glasbila. Avtorja portala Tim & Tugomir Androja
+											vam želiva veliko glasbenih užitkov.
+										</Typography>
+									</Box>
+								</Box>
+							</Grid>
+						</Grid>
 					</Grid>
 				</Grid>
-			</Container>
-			<Container maxWidth={false} className={classes.containerMargin} component="section">
-				<Typography gutterBottom variant="h6" component="h3">
-					Dodatne informacije portala:
-				</Typography>
-				<Typography gutterBottom variant="body2" component="p" align="justify">
-					AKORDI ZA KITARO IN BESEDILA PESMI popularnih aktualnih ansamblov, bandov, glasbenih skupin,
-					glasbenikov in pevcev. Glasbeni portal je namenjen vsem ljubiteljem slovenske in ostale glasbe, ki
-					želijo poleg besedila posamezne pesmi imeti še pripadajoče akorde za to pesem. Akordi vam bodo v
-					pomoč pri učenju: kitare, klaviature, klavirja, sintesajzerja, harmonike ipd. tako da lahko svojo
-					priljubljeno pesem pojete in istočasno spremljate na svojem glasbenem instrumentu. Določene pesmi
-					poleg prijemov za kitaro vsebujejo tudi tablature za kitaro katere veliko kitaristov uporablja
-					namesto not, da pridobi lažjo in hitrejšo orientacijo. Na portalu so zbrana raznovrstna besedila
-					pesmi z akordi, zato sva jih razvrstila v 8 glasbenih skupin: Slovenske pesmi, Angleške pesmi,
-					Otroške pesmice, Božične pesmi, Hrvaške pesmi, Ljudske pesmi, Slovenska popevka, in Narodno zabavna
-					glasba. Zaradi enostavnost iskanja lahko določeno pesem najdete v različnih glasbenih skupinah npr:
-					Pesem V dolini tihi spada pod v katregoriji Narodno zabavna glasba in Slovenske pesmi.
-				</Typography>
-				<Typography gutterBottom variant="body2" component="p" align="justify">
-					Posebnost glasbenega portala AKORDI ZA KITARO BESEDILA pesmi je ta, da na njem lahko istočasno
-					gledate videospot ter spremljate besedilo, akorde in tablaturo vaše prilubljene skladbe. Vabimo vas,
-					da tudi vi prispevate priljubljene pesmi z akordi in besedilom ter povezavo do ustreznega videa. Naj
-					vam bo naš portal v pomoč pri igranju kitare, klaviature, harmonike oziroma drugega akordičnega
-					glasbila. Avtorja portala Tim & Tugomir Androja vam želiva veliko glasbenih užitkov.
-				</Typography>
-			</Container>
-			<section>
-				<Typography gutterBottom variant="h4" component="h3" className={classes.containerMargin}>
+			</Box>
+
+			<Box marginTop={6}>
+				<Typography gutterBottom variant="h6" component="h3" className={classes.containerMargin}>
 					GLASBENI ČLANKI:
 				</Typography>
 				<Grid container>
 					<Divider />
 					{blog}
 				</Grid>
-			</section>
+			</Box>
 		</Layout>
 	);
 }

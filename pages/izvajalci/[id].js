@@ -69,7 +69,7 @@ function Artist({ songsNew, songsPopular, authorName }) {
 			<Typography variant="h6" gutterBottom>
 				SEZNAM BESEDIL AKORDOV IN TABLATUR, KI SE NAHAJAJO V NAŠI BAZI GLASBENEGA IZVAJALCA:{' '}
 				<strong>
-					<span style={{ color: theme.palette.secondary.main }}>{authorName.toUpperCase()}</span>
+					<span style={{ color: theme.palette.primary.main }}>{authorName.toUpperCase()}</span>
 				</strong>
 			</Typography>
 			<Songbrowser newsetsongs={songsNew} popularSongs={songsPopular} />
@@ -98,7 +98,7 @@ function Artist({ songsNew, songsPopular, authorName }) {
 				<Grid item md={7} sm={6} xs={12}>
 					<Box marginBottom={3}>
 						<Typography variant="h4" component="h1">
-							<span style={{ color: theme.palette.secondary.main }}>
+							<span style={{ color: theme.palette.primary.main }}>
 								<strong>{authorName.toUpperCase()}</strong>
 							</span>{' '}
 							PESMI AKORDI BESEDILA SKLADBE

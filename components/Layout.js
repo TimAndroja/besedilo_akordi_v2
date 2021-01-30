@@ -20,8 +20,8 @@ const useStyles = makeStyles({
 
 		[theme.breakpoints.up('lg')]: {
 			paddingTop: theme.spacing(10),
-			paddingLeft: theme.spacing(10),
-			paddingRight: theme.spacing(10),
+			paddingLeft: theme.spacing(9),
+			paddingRight: theme.spacing(9),
 			minHeight: 0,
 			minWidth: 0,
 			width: '100%'

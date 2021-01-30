@@ -62,7 +62,7 @@ function SamplePrevArrow(props) {
 	);
 }
 
-export default function SongCarousel({ songs }) {
+export default function SongCarouselSmall({ songs }) {
 	const classes = useStyles();
 	function songToUrl(title, id) {
 		return (
@@ -78,8 +78,8 @@ export default function SongCarousel({ songs }) {
 		lazyLoad: true,
 		arrows: true,
 		speed: 800,
-		slidesToShow: 4,
-		slidesToScroll: 4,
+		slidesToShow: 3,
+		slidesToScroll: 3,
 		autoplay: false,
 		nextArrow: <SampleNextArrow />,
 		prevArrow: <SamplePrevArrow />,

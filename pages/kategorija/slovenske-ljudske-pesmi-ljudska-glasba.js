@@ -49,7 +49,7 @@ export default function ljudske_pesmi({ newestSongs, popularSongs, mostSongsArti
 				gutterBottom
 				variant="subtitle1"
 				component="h2"
-				color="secondary"
+				color="primary"
 				style={{ marginTop: theme.spacing(3) }}
 			>
 				<strong>SLOVENSKE LJUDSKE PESMI </strong> LJUDSKA GLASBA Besedilo (Tekst, Text, Lyrics), Akordi prijemi

@@ -48,7 +48,7 @@ export default function slovenske_pesmi({ newestSongs, popularSongs, mostSongsAr
 				gutterBottom
 				variant="subtitle1"
 				component="h2"
-				color="secondary"
+				color="primary"
 				style={{ marginTop: theme.spacing(3) }}
 			>
 				<strong>OSTALE PESMI</strong> Angleške, disco, GLASBA Instrumentalna klasična Besedila (Tekst, Text,

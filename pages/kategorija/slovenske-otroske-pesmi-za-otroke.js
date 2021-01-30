@@ -48,7 +48,7 @@ export default function otroske_pesmi({ newestSongs, popularSongs, mostSongsArti
 				gutterBottom
 				variant="subtitle1"
 				component="h2"
-				color="secondary"
+				color="primary"
 				style={{ marginTop: theme.spacing(3) }}
 			>
 				<strong> SLOVENSKE OTROŠKE PESMI ZA OTROKE</strong> Besedila (Tekst, Text, Lyrics), Akordi prijemi
