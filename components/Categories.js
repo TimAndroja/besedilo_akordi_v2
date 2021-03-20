@@ -102,7 +102,7 @@ export default function Categories() {
                 </ListItem>
               </Link>
             </Grid>
-            <Grid xs={6} md={4}>
+            <Grid item xs={6} md={4}>
               <Link href="/kategorija/pop-rock-gasba-ex-yu-yugo">
                 <ListItem button dense>
                   <ListItemIcon>
